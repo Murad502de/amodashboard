@@ -2120,7 +2120,7 @@ __webpack_require__.r(__webpack_exports__);
     var path = this.$route.path;
     path = path.split('/');
     path = path[path.length - 1];
-    axios.get('https://www.hub.integrat.pro/Murad/amodashboard/api/' + path).then(function (response) {
+    axios.get('https://www.hub.integrat.pro/Murad/amodashboard/public/api/' + path).then(function (response) {
       return _this.amo_data = response.data;
     }); //http://amodashboard/
 
