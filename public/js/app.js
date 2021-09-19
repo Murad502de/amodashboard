@@ -2513,7 +2513,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/changingstages',
     component: _components_ChangingStages_ChangingStages__WEBPACK_IMPORTED_MODULE_1__["default"]
   }, {
-    path: '/keintasks',
+    path: '/Murad/amodashboard/keintasks',
     component: _components_KeinTasks_KeinTasks__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
     path: '/overduetasks',
