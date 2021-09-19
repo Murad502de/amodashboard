@@ -19,7 +19,7 @@
             path = path[ path.length - 1 ]
 
             axios
-                .get( 'https://www.hub.integrat.pro/Murad/amodashboard/api/' + path )
+                .get( 'https://www.hub.integrat.pro/Murad/amodashboard/public/api/' + path )
                 .then(
                     response => ( this.amo_data = response.data )
                 );
