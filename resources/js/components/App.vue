@@ -27,7 +27,7 @@
                 //http://amodashboard/
 
             console.log( 'route' );
-            console.log( this.$route );
+            console.log( 'https://www.hub.integrat.pro/Murad/amodashboard/public/api/' + path );
         }
     }
 </script>
