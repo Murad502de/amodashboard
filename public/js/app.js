@@ -2085,8 +2085,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component ActiveLeads mounted');
-    console.log('data:');
-    console.log(this.data);
+    /*console.log( 'data:' );
+    console.log( this.data );*/
   }
 });
 
@@ -2117,7 +2117,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log('Component App mounted');
-    axios.get('http://127.0.0.1:8000/api' + this.$route.path).then(function (response) {
+    axios.get('http://amodashboard/api' + this.$route.path).then(function (response) {
       return _this.amo_data = response.data;
     });
     console.log('route');
@@ -21682,7 +21682,22 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "dashboard-tile__item-top-big-count " }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "dashboard-tile__item-top-big-count-value js-resize-txt",
+            staticStyle: { "font-size": "40px", height: "40px" },
+            attrs: {
+              "data-font-size": "45",
+              "data-font-size-min": "20",
+              "data-font-proportion": "45:200"
+            }
+          },
+          [_c("span", [_vm._v(_vm._s(_vm.total))])]
+        )
+      ])
     ]
   )
 }
@@ -21695,26 +21710,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "dashboard-tile__item-title-txt" }, [
         _vm._v("Активные сделки без задач")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dashboard-tile__item-top-big-count " }, [
-      _c(
-        "div",
-        {
-          staticClass: "dashboard-tile__item-top-big-count-value js-resize-txt",
-          staticStyle: { "font-size": "40px", height: "40px" },
-          attrs: {
-            "data-font-size": "45",
-            "data-font-size-min": "20",
-            "data-font-proportion": "45:200"
-          }
-        },
-        [_c("span", [_vm._v("126")])]
-      )
     ])
   }
 ]

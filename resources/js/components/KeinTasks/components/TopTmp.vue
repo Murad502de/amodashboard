@@ -14,7 +14,7 @@
 
         <div class="dashboard-tile__item-top-big-count ">
             <div class="dashboard-tile__item-top-big-count-value js-resize-txt" data-font-size="45" data-font-size-min="20" data-font-proportion="45:200" style="font-size: 40px; height: 40px;">
-                <span>126</span>
+                <span>{{ total }}</span>
             </div>
         </div>
     </div>

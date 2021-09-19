@@ -13,7 +13,7 @@ export default new VueRouter(
         routes : [
             {
                 path : '/activeleads',
-                component : ActiveLeads
+                component : ActiveLeads 
             },
 
             {

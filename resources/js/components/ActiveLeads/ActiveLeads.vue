@@ -20,8 +20,8 @@
 
         mounted () {
             console.log( 'Component ActiveLeads mounted' );
-            console.log( 'data:' );
-            console.log( this.data );
+            /*console.log( 'data:' );
+            console.log( this.data );*/
         }
     }
 </script>

@@ -14,7 +14,7 @@
             console.log( 'Component App mounted' );
 
             axios
-                .get( 'http://127.0.0.1:8000/api' + this.$route.path )
+                .get( 'http://amodashboard/api' + this.$route.path )
                 .then(
                     response => ( this.amo_data = response.data )
                 );

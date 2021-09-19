@@ -23,6 +23,6 @@
     <body class="antialiased">
         <div id="app"></div>
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('public/js/app.js') }}" defer></script>
     </body>
 </html>
