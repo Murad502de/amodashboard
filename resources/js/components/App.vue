@@ -13,8 +13,13 @@
         mounted () {
             console.log( 'Component App mounted' );
 
+            let path = this.$route.path;
+
+            path = path.split( '/' );
+            path = path[ path.length - 1 ]
+
             axios
-                .get( 'https://www.hub.integrat.pro/Murad/amodashboard/api' + this.$route.path )
+                .get( 'https://www.hub.integrat.pro/Murad/amodashboard/api/' + path )
                 .then(
                     response => ( this.amo_data = response.data )
                 );
