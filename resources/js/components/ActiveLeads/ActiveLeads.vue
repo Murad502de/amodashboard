@@ -1,31 +1,31 @@
 <template>
-    <div>
-        <h1>ActiveLeads Component</h1>
-        <ul id="example-1">
-            <li v-for="item in data" :key="item.name">
-                {{ item.name }}
-            </li>
-        </ul>
-    </div>
+    <section class="dashboard-tile__item">
+        <top-tmp :total="data.totalAmount"/>
+		<chart-tmp :users="data.leads"/>
+	</section>
 </template>
 
 <script>
+    import TopTmp from './components/TopTmp';
+    import ChartTmp from './components/ChartTmp';
+
     export default {
         props : {
             data : {
-                type : Array,
+                type : Object,
                 required : true
             }
         },
 
+        components : {
+            TopTmp, ChartTmp
+        },
+
         mounted () {
             console.log( 'Component ActiveLeads mounted' );
-            /*console.log( 'data:' );
-            console.log( this.data );*/
         }
     }
 </script>
 
 <style>
-
 </style>

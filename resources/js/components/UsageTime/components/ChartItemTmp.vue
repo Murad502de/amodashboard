@@ -1,14 +1,18 @@
 <template>
-    <div class="pipeline-block-users">
-        <div v-for="user in users" :key="user.name" class="dashboard-tile__item-chart-item">
-            <div class="dashboard-tile__item-chart-item-title">
-                <span class="dashboard-tile__item-chart-item-link js-navigate-link">{{user.name}}:</span>
+    <div class="pipeline-block-users" :data-id_pipeline-users="group">
+        <div v-for="user in users" :key="user.name" style="display: grid; grid-template-columns: 10% 90%;">
+            <div class="dashboard-tile-online__avatar" style="background-image: url(/v3/users/b262af3e-a67d-11eb-860b-00163ef260f3/avatar/?1626943666), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)" title="Мурад"></div>
+
+            <div class="dashboard-tile__item-chart-item">
+                <div class="dashboard-tile__item-chart-item-title">
+                    <span class="dashboard-tile__item-chart-item-link js-navigate-link">{{user.name}}:</span>
+                </div>
+                <div class="dashboard-tile__item-chart-item-count">
+                    <span class="dashboard-tile__item-chart-item-link js-navigate-link">&nbsp;<strong>{{user.count}}</strong></span>
+                </div>
+                <div class="dashboard-tile__item-chart-item-period-count ">&nbsp;</div>
+                <div class="dashboard-tile__item-chart-item-progress" v-bind:style="{ width : user.percent + '%' }"></div>
             </div>
-            <div class="dashboard-tile__item-chart-item-count">
-                <span class="dashboard-tile__item-chart-item-link js-navigate-link">&nbsp;<strong>{{user.count}}</strong></span>
-            </div>
-            <div class="dashboard-tile__item-chart-item-period-count ">&nbsp;</div>
-            <div class="dashboard-tile__item-chart-item-progress" v-bind:style="{ width : user.percent + '%' }"></div>
         </div>
     </div>
 </template>
@@ -18,6 +22,11 @@
         props : {
             users : {
                 type : Array,
+                required : true
+            },
+
+            group : {
+                type : String,
                 required : true
             }
         },
@@ -107,5 +116,18 @@
 
     .pipeline-user-list-hidden {
         display: none;
+    }
+
+    .dashboard-tile-online__avatar {
+        flex-shrink: 0;
+        width: 35px;
+        margin-right: 10px;
+        min-width: 35px;
+        height: 35px;
+        overflow: hidden;
+        border-radius: 50%;
+        display: inline-block;
+        flex-basis: 35px;
+        background-size: cover;
     }
 </style>

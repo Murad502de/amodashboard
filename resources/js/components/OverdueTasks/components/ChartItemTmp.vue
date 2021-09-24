@@ -1,5 +1,5 @@
 <template>
-    <div class="pipeline-block-users">
+    <div class="pipeline-block-users" :data-id_pipeline-users="pipeline">
         <div v-for="user in users" :key="user.name" class="dashboard-tile__item-chart-item">
             <div class="dashboard-tile__item-chart-item-title">
                 <span class="dashboard-tile__item-chart-item-link js-navigate-link">{{user.name}}:</span>
@@ -18,6 +18,11 @@
         props : {
             users : {
                 type : Array,
+                required : true
+            },
+
+            pipeline : {
+                type : String,
                 required : true
             }
         },

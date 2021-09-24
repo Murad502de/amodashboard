@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard-tile__item-top dashboard-tile__item-top_double">
         <h4 class="dashboard-tile__item-title  short ">
-            <span class="dashboard-tile__item-title-txt">Активные сделки без задач</span>
+            <span class="dashboard-tile__item-title-txt">Изменение этапов продаж</span>
         </h4>
 
         <span class="dashboard-tile__item-actions ">
@@ -23,6 +23,11 @@
 <script>
     export default {
         props : {
+            pipelines : {
+                type : Object,
+                required : true
+            },
+
             total : {
                 type : Number,
                 required : true

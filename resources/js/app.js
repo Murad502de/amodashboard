@@ -9,8 +9,10 @@ import Vue from 'vue';
 
 Vue.use( VueRouter );
 
-const app = new Vue({
-    el : '#app',
-    render : h => h( App ),
-    router
-});
+const app = new Vue(
+    {
+        el : '#app',
+        render : h => h( App ),
+        router
+    }
+);

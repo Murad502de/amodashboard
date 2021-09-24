@@ -22,7 +22,7 @@ export default new VueRouter(
             },
 
             {
-                path : '/Murad/amodashboard/keintasks',
+                path : '/keintasks',
                 component : KeinTasks
             },
 

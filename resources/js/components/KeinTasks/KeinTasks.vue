@@ -1,7 +1,7 @@
 <template>
     <section class="dashboard-tile__item">
-        <top-tmp :pipelines="data.pipelines.list" :total="data.pipelines.totalAmount"/>
-		<chart-tmp :pipelines="data.pipelines.list"/>
+        <top-tmp :total="data.totalAmount"/>
+		<chart-tmp :users="data.leads"/>
 	</section>
 </template>
 
@@ -41,9 +41,7 @@
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         flex-direction: column;
-    }
-
-    .dashboard-tile__item {
         background: rgba(12,37,61,.95);
+        min-height: 400px;
     }
 </style>

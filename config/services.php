@@ -1,5 +1,7 @@
 <?php
 
+use App\Services\amoCRM\amoCRM;
+
 return [
 
     /*
@@ -30,4 +32,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'amoCRM' => [
+        'client_id' => env( 'AMOCRM_CLIENT_ID', null ),
+        'client_secret' => env( 'AMOCRM_CLIENT_SECRET', null ),
+        'code' => env( 'AMOCRM_CODE', null ),
+        'redirect_uri' => env( 'AMOCRM_REDIRECT_URI', null ),
+        'subdomain' => env( 'AMOCRM_SUBDOMAIN', null )
+    ]
 ];

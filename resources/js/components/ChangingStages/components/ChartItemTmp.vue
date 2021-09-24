@@ -1,6 +1,6 @@
 <template>
-    <div class="pipeline-block-users">
-        <div v-for="user in users" :key="user.name" class="dashboard-tile__item-chart-item">
+    <div class="pipeline-block-users" :data-id_pipeline-users="pipeline">
+        <div v-for="(user, index) in users" :key="index" class="dashboard-tile__item-chart-item">
             <div class="dashboard-tile__item-chart-item-title">
                 <span class="dashboard-tile__item-chart-item-link js-navigate-link">{{user.name}}:</span>
             </div>
@@ -8,7 +8,12 @@
                 <span class="dashboard-tile__item-chart-item-link js-navigate-link">&nbsp;<strong>{{user.count}}</strong></span>
             </div>
             <div class="dashboard-tile__item-chart-item-period-count ">&nbsp;</div>
-            <div class="dashboard-tile__item-chart-item-progress" v-bind:style="{ width : user.percent + '%' }"></div>
+            <div
+                class="dashboard-tile__item-chart-item-stage-progress"
+                v-bind:style="{ width : user.percent + '%' }"
+                :data-id-color="index"
+                :data-id-stage="user.stage"
+            ></div>
         </div>
     </div>
 </template>
@@ -18,6 +23,11 @@
         props : {
             users : {
                 type : Array,
+                required : true
+            },
+
+            pipeline : {
+                type : String,
                 required : true
             }
         },
@@ -81,14 +91,29 @@
         margin-bottom: 12px;
     }
 
-    .dashboard-tile__item-chart-item-progress {
+    .dashboard-tile__item-chart-item-stage-progress {
         position: absolute;
         bottom: 0;
         left: 0;
         height: 4px;
         border-radius: 10px;
-        background-color: #ffd66d;
         z-index: 1;
+    }
+
+    div[data-id-color] {
+        background-color: #ffd66d;
+    }
+
+    div[data-id-color="0"] {
+        background-color: #99CCFF;
+    }
+
+    div[data-id-stage="142"] {
+        background-color: #00D669;
+    }
+
+    div[data-id-stage="143"] {
+        background-color: #A5B0B9;
     }
 
     .dashboard-tile__item-chart-item-period-count {

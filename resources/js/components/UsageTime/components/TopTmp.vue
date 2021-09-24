@@ -1,34 +1,25 @@
 <template>
-    <div class="dashboard-tile__item-top dashboard-tile__item-top_double">
+    <div class="dashboard-tile__item-top-usage dashboard-tile__item-top_double">
         <h4 class="dashboard-tile__item-title  short ">
-            <span class="dashboard-tile__item-title-txt">Активные сделки без задач</span>
+            <span class="dashboard-tile__item-title-txt">Использование системы</span>
         </h4>
-
-        <span class="dashboard-tile__item-actions ">
-            <span class="dashboard-tile__item-settings js-tile-convert-icon">
-                <svg class="svg-icon svg-common--gear-dims">
-                    <use xlink:href="#common--gear"></use>
-                </svg>
-            </span>
-        </span>
-
-        <div class="dashboard-tile__item-top-big-count ">
-            <div class="dashboard-tile__item-top-big-count-value js-resize-txt" data-font-size="45" data-font-size-min="20" data-font-proportion="45:200" style="font-size: 40px; height: 40px;">
-                <span>{{ total }}</span>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
     export default {
         props : {
+            pipelines : {
+                type : Object,
+                required : true
+            },
+
             total : {
                 type : Number,
                 required : true
             }
         },
-    
+
         mounted () {
             console.log( 'Component TopTmp mounted' );
         }
@@ -66,9 +57,8 @@
         flex-direction: column;
     }
 
-    .dashboard-tile__item-top {
+    .dashboard-tile__item-top-usage {
         position: relative;
-        min-height: 70px;
         flex-shrink: 0;
     }
 

@@ -17,7 +17,7 @@
         },
         props : {
             users : {
-                type : Array,
+                type : Object,
                 required : true
             }
         },

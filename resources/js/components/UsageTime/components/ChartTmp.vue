@@ -1,7 +1,19 @@
 <template>
     <div class="dashboard-tile__item-chart">
-        <div class="pipeline-block">
-            <chart-item-tmp :users="users"/>
+        <div class="group-block"  v-for="(group, index) in groups" :key="index">
+            <div class="group-block-title" v-on:click="group_visibility(index)" :data-id_group-title="index">
+                <h3 class="group-name">
+                    {{ group.name }}:&nbsp;<span class="group-amount">{{ group.amount }}</span>
+                </h3>
+                <transition name="fade">
+                    <div v-bind:class="{ dashboard_tile__item_chart_item_group: !group.show }">
+                        <div v-if="!group.show" class="dashboard-tile__item-chart-item-progress-group" v-bind:style="{ width : group.amount + '%' }"></div>
+                    </div>
+                </transition>
+            </div>
+            <transition name="fade">
+                <chart-item-tmp v-if="group.show" :users="group.users" :group="index"/>
+            </transition>
         </div>
     </div>
 </template>
@@ -16,8 +28,8 @@
             }
         },
         props : {
-            users : {
-                type : Array,
+            groups : {
+                type : Object,
                 required : true
             }
         },
@@ -27,13 +39,13 @@
         },
 
         methods : {
-            pipeline_visibility : function ( pipelineId ) {
-                console.log( 'pipeline_visibility' );
+            group_visibility : function ( groupId ) {
+                console.log( 'group_visibility' );
 
-                let userList = document.querySelector( `div[data-id_pipeline-users="${pipelineId}"]` );
+                let userList = document.querySelector( `div[data-id_group-users="${groupId}"]` );
 
-                //userList.classList.toggle( "pipeline-user-list-hidden" );
-                this.pipelines[ pipelineId ].show = !this.pipelines[ pipelineId ].show;
+                //userList.classList.toggle( "group-user-list-hidden" );
+                this.groups[ groupId ].show = !this.groups[ groupId ].show;
                 //console.log( userList );
             }
         },
@@ -52,7 +64,7 @@
     opacity: 0;
     }
 
-    .dashboard-tile__item-chart-item-progress-pipeline {
+    .dashboard-tile__item-chart-item-progress-group {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -62,7 +74,7 @@
         z-index: 1;
     }
 
-    .dashboard_tile__item_chart_item_pipeline:after {
+    .dashboard_tile__item_chart_item_group:after {
         content: "";
         position: absolute;
         bottom: 0;
@@ -73,7 +85,7 @@
         background-color: #041c30;
     }
 
-    .dashboard_tile__item_chart_item_pipeline {
+    .dashboard_tile__item_chart_item_group {
         padding-top: 5px;
     }
 
@@ -105,20 +117,20 @@
         overflow: hidden;
     }
 
-    .pipeline-name {
+    .group-name {
         color: white;
         margin-bottom: 10px;
     }
 
-    .pipeline-block {
+    .group-block {
         margin-bottom: 20px;
     }
 
-    .pipeline-amount {
+    .group-amount {
         color: #8275ff;
     }
 
-    .pipeline-block-title {
+    .group-block-title {
         cursor : pointer;
         position : relative;
     }
