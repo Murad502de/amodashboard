@@ -23,7 +23,7 @@ class amoCRM
 
         $this->client = new amoClient();
 
-        $this->pageItemLimit = 2;
+        $this->pageItemLimit = 250;
 
         $this->amoData[ 'client_id' ]     = $amoData[ 'client_id' ] ?? null;
         $this->amoData[ 'client_secret' ] = $amoData[ 'client_secret' ] ?? null;
