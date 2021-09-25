@@ -92,10 +92,10 @@ class ActiveleadsController extends Controller
             }
         }
 
-        echo 'ActiveleadsController@getList : leadList<br>';
+        /*echo 'ActiveleadsController@getList : leadList<br>';
         echo '<pre>';
         print_r( $leadList );
-        echo '</pre><br>';
+        echo '</pre><br>';*/
     }
 
     public function getChart ()
