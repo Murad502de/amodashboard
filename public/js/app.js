@@ -3102,19 +3102,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
   routes: [{
-    path: '/activeleads',
+    path: '/Murad/amodashboard/activeleads',
     component: _components_ActiveLeads_ActiveLeads__WEBPACK_IMPORTED_MODULE_0__["default"]
   }, {
-    path: '/changingstages',
+    path: '/Murad/amodashboard/changingstages',
     component: _components_ChangingStages_ChangingStages__WEBPACK_IMPORTED_MODULE_1__["default"]
   }, {
-    path: '/keintasks',
+    path: '/Murad/amodashboard/keintasks',
     component: _components_KeinTasks_KeinTasks__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/overduetasks',
+    path: '/Murad/amodashboard/overduetasks',
     component: _components_OverdueTasks_OverdueTasks__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/usagetime',
+    path: '/Murad/amodashboard/usagetime',
     component: _components_UsageTime_UsageTime__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/talktime',

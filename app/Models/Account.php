@@ -39,6 +39,8 @@ class Account extends Model
     {
         $authData = self::all()->first();
 
+        if ( !$authData ) return false;
+
         return [
             'subdomain' => $authData->subdomain,
             'access_token' => $authData->access_token,

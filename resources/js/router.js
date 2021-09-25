@@ -12,27 +12,27 @@ export default new VueRouter(
     {
         routes : [
             {
-                path : '/activeleads',
+                path : '/Murad/amodashboard/activeleads',
                 component : ActiveLeads 
             },
 
             {
-                path : '/changingstages',
+                path : '/Murad/amodashboard/changingstages',
                 component : ChangingStages
             },
 
             {
-                path : '/keintasks',
+                path : '/Murad/amodashboard/keintasks',
                 component : KeinTasks
             },
 
             {
-                path : '/overduetasks',
+                path : '/Murad/amodashboard/overduetasks',
                 component : OverdueTasks
             },
 
             {
-                path : '/usagetime',
+                path : '/Murad/amodashboard/usagetime',
                 component : UsageTime
             },
 
