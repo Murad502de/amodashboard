@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Services;
 
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\amoAPI\amoCRM;
@@ -15,28 +16,31 @@ class amoAuthController extends Controller
 
     function __construct ()
     {
-        $this->authData = config( 'services.amoCRM' );
-
-        $this->amo = new amoCRM( $this->authData );
         $this->account = new Account();
     }
 
-    public function auth ()
+    public function auth ( Request $request )
     {
-        echo 'amoAuthController@auth<br>';
+        $this->authData = [
+            'client_id'     => $request->all()[ 'client_id' ],
+            'client_secret' => config( 'services.amoCRM' )[ 'client_secret' ],
+            'code'          => $request->all()[ 'code' ],
+            'redirect_uri'  => config( 'services.amoCRM' )[ 'redirect_uri' ],
+            'subdomain'     => config( 'services.amoCRM' )[ 'subdomain' ]
+        ];
+
+        $this->amo = new amoCRM( $this->authData );
+
+        Log::info(
+            __METHOD__,
+
+            $this->authData
+        );
 
         $response = $this->amo->auth();
 
         if ( $response[ 'code' ] >= 200 && $response[ 'code' ] < 204 )
         {
-            echo 'auth data save<br>';
-            echo $response[ 'code' ] . ' <br>';
-
-            echo 'amoAuthController@auth : response<br>';
-            echo '<pre>';
-            print_r( $response );
-            echo '</pre><br>';
-
             $accountData = [
                 'subdomain'     => $this->authData[ 'subdomain' ],
                 'access_token'  => $response[ 'body' ][ 'access_token' ],

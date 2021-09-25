@@ -35,11 +35,11 @@ class amoCRM
 
     public function auth ()
     {
-        echo 'amoCRM@auth<br>';
+        /*echo 'amoCRM@auth<br>';
 
         echo '<pre>';
         print_r( $this->amoData );
-        echo '</pre><br>';
+        echo '</pre><br>';*/
 
         try
         {
@@ -66,10 +66,10 @@ class amoCRM
                 throw new \Exception( $response[ 'code' ] );
             }
 
-            echo 'amoCRM@auth : response<br>';
+            /*echo 'amoCRM@auth : response<br>';
             echo '<pre>';
             print_r( $response );
-            echo '</pre><br>';
+            echo '</pre><br>';*/
         }
         catch ( \Exception $exception )
         {
