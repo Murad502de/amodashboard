@@ -1,7 +1,7 @@
 <template>
     <section class="dashboard-tile__item">
-        <top-tmp :pipelines="data.pipelines.list" :total="data.pipelines.totalAmount"/>
-		<chart-tmp :pipelines="data.pipelines.list"/>
+        <top-tmp :total="data.totalAmount"/>
+		<chart-tmp :users="data.leads"/>
 	</section>
 </template>
 

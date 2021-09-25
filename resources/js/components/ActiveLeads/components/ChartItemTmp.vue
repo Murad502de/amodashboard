@@ -19,11 +19,6 @@
             users : {
                 type : Array,
                 required : true
-            },
-
-            pipeline : {
-                type : String,
-                required : true
             }
         },
 

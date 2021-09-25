@@ -19,17 +19,18 @@ class amoCRM
 
     function __construct ( $amoData )
     {
-        echo 'const amoCRM<br>';
+        //echo 'const amoCRM<br>';
 
         $this->client = new amoClient();
 
-        $this->pageItemLimit = 250;
+        $this->pageItemLimit = 2;
 
         $this->amoData[ 'client_id' ]     = $amoData[ 'client_id' ] ?? null;
         $this->amoData[ 'client_secret' ] = $amoData[ 'client_secret' ] ?? null;
         $this->amoData[ 'code' ]          = $amoData[ 'code' ] ?? null;
         $this->amoData[ 'redirect_uri' ]  = $amoData[ 'redirect_uri' ] ?? null;
         $this->amoData[ 'subdomain' ]     = $amoData[ 'subdomain' ] ?? null;
+        $this->amoData[ 'access_token' ]  = $amoData[ 'access_token' ] ?? null;
     }
 
     public function auth ()
@@ -88,16 +89,34 @@ class amoCRM
 
     public function list ( $entity )
     {
+        if ( !$entity ) return false;
+
         $page = 1;
         $leadList = [];
+        $api = '';
 
-        $url = 'https://' . $this->amoData[ 'subdomain' ] . '.amocrm.ru/api/v4/leads?limit=' . $this->pageItemLimit . '&page=' . $page;
+        switch ( $entity )
+        {
+            case 'lead' :
+                $api = '/api/v4/leads';
+            break;
+
+            case 'contact' :
+            break;
+
+            case 'users' :
+                $api = '/api/v4/users';
+            break;
+            
+            default:
+            break;
+        }
 
         for ( ;; $page++ )
         {
-            usleep( 500000 );
-            
-            $leadList[ $page - 1 ] = $this->Http->sendRequest( false, 'GET' );
+            //usleep( 500000 );
+
+            $url = 'https://' . $this->amoData[ 'subdomain' ] . '.amocrm.ru' . $api . '?limit=' . $this->pageItemLimit . '&page=' . $page;
 
             $response = $this->client->sendRequest(
 
@@ -105,16 +124,16 @@ class amoCRM
                     'url'     => $url,
                     'headers' => [
                         'Content-Type'  => 'application/json',
-                        'Authorization' => 'Bearer ' . $this->accountRequestData[ 'access_token' ]
+                        'Authorization' => 'Bearer ' . $this->amoData[ 'access_token' ]
                     ],
                     'method'  => 'GET'
                 ]
             );
 
             if ( $response[ 'code' ] < 200 || $response[ 'code' ] >= 204 ) break;
-        }
 
-        //echo "list\r\n";
+            $leadList[ $page - 1 ] = $response[ 'body' ];
+        }
 
         return $leadList;
     }

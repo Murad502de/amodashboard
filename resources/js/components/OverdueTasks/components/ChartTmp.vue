@@ -1,19 +1,7 @@
 <template>
     <div class="dashboard-tile__item-chart">
-        <div class="pipeline-block"  v-for="(pipeline, index) in pipelines" :key="index">
-            <div class="pipeline-block-title" v-on:click="pipeline_visibility(index)" :data-id_pipeline-title="index">
-                <h3 class="pipeline-name">
-                    {{ pipeline.name }}:&nbsp;<span class="pipeline-amount">{{ pipeline.amount }}</span>
-                </h3>
-                <transition name="fade">
-                    <div v-bind:class="{ dashboard_tile__item_chart_item_pipeline: !pipeline.show }">
-                        <div v-if="!pipeline.show" class="dashboard-tile__item-chart-item-progress-pipeline" v-bind:style="{ width : pipeline.amount + '%' }"></div>
-                    </div>
-                </transition>
-            </div>
-            <transition name="fade">
-                <chart-item-tmp v-if="pipeline.show" :users="pipeline.leads" :pipeline="index"/>
-            </transition>
+        <div class="pipeline-block">
+            <chart-item-tmp :users="users"/>
         </div>
     </div>
 </template>
@@ -28,8 +16,8 @@
             }
         },
         props : {
-            pipelines : {
-                type : Object,
+            users : {
+                type : Array,
                 required : true
             }
         },

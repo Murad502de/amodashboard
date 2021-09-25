@@ -2125,10 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
     users: {
       type: Array,
       required: true
-    },
-    pipeline: {
-      type: String,
-      required: true
     }
   },
   mounted: function mounted() {
@@ -2167,7 +2163,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     users: {
-      type: Object,
+      type: Array,
       required: true
     }
   },
@@ -2364,10 +2360,6 @@ __webpack_require__.r(__webpack_exports__);
     users: {
       type: Array,
       required: true
-    },
-    pipeline: {
-      type: String,
-      required: true
     }
   },
   mounted: function mounted() {
@@ -2397,18 +2389,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -2417,8 +2397,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: {
-    pipelines: {
-      type: Object,
+    users: {
+      type: Array,
       required: true
     }
   },
@@ -2475,10 +2455,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    pipelines: {
-      type: Object,
-      required: true
-    },
     total: {
       type: Number,
       required: true
@@ -2740,10 +2716,6 @@ __webpack_require__.r(__webpack_exports__);
     users: {
       type: Array,
       required: true
-    },
-    pipeline: {
-      type: String,
-      required: true
     }
   },
   mounted: function mounted() {
@@ -2773,18 +2745,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -2793,8 +2753,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: {
-    pipelines: {
-      type: Object,
+    users: {
+      type: Array,
       required: true
     }
   },
@@ -2851,10 +2811,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    pipelines: {
-      type: Object,
-      required: true
-    },
     total: {
       type: Number,
       required: true
@@ -2965,10 +2921,6 @@ __webpack_require__.r(__webpack_exports__);
     users: {
       type: Array,
       required: true
-    },
-    group: {
-      type: String,
-      required: true
     }
   },
   mounted: function mounted() {
@@ -2998,18 +2950,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -3018,8 +2958,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: {
-    groups: {
-      type: Object,
+    users: {
+      type: Array,
       required: true
     }
   },
@@ -3062,10 +3002,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    pipelines: {
-      type: Object,
-      required: true
-    },
     total: {
       type: Number,
       required: true
@@ -3178,11 +3114,11 @@ __webpack_require__.r(__webpack_exports__);
     path: '/overduetasks',
     component: _components_OverdueTasks_OverdueTasks__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/talktime',
-    component: _components_TalkTime_TalkTime__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, {
     path: '/usagetime',
     component: _components_UsageTime_UsageTime__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
+    path: '/talktime',
+    component: _components_TalkTime_TalkTime__WEBPACK_IMPORTED_MODULE_4__["default"]
   }],
   mode: 'history'
 }));
@@ -3326,7 +3262,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dashboard-tile__item-chart-item:after {\n    content: \"\";\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 4px;\n    border-radius: 10px;\n}\n.dashboard-tile__item-chart-item:after {\n    background-color: #041c30;\n}\n.dashboard-tile__item {\n    padding: 14px 15px 13px;\n    position: relative;\n    height: 100%;\n    width: 100%;\n    box-shadow: 0 4px 4px rgb(0 0 0 / 35%);\n    box-sizing: border-box;\n    border-radius: 10px;\n    display: flex;\n    flex-direction: column;\n}\n.dashboard-tile__item-chart {\n    display: flex;\n    flex-direction: column;\n    flex-grow: 1;\n    padding-top: 9px;\n    min-height: 0;\n    overflow: hidden;\n}\n.dashboard-tile__item-chart-item {\n    display: flex;\n    align-items: baseline;\n    position: relative;\n    padding-bottom: 8px;\n    margin-bottom: 12px;\n}\n.dashboard-tile__item-chart-item-stage-progress {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    height: 4px;\n    border-radius: 10px;\n    z-index: 1;\n}\ndiv[data-id-color] {\n    background-color: #ffd66d;\n}\ndiv[data-id-color=\"0\"] {\n    background-color: #99CCFF;\n}\ndiv[data-id-stage=\"142\"] {\n    background-color: #00D669;\n}\ndiv[data-id-stage=\"143\"] {\n    background-color: #A5B0B9;\n}\n.dashboard-tile__item-chart-item-period-count {\n    color: #00d669;\n    margin-left: auto;\n}\n.dashboard-tile__item-chart-item-count {\n    font-weight: 700;\n    margin-left: 5px;\n}\n.dashboard-tile__item-chart-item-link {\n    color: white;\n}\n.pipeline-user-list-hidden {\n    display: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dashboard-tile__item-chart-item:after {\n    content: \"\";\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 4px;\n    border-radius: 10px;\n}\n.dashboard-tile__item-chart-item:after {\n    background-color: #041c30;\n}\n.dashboard-tile__item {\n    padding: 14px 15px 13px;\n    position: relative;\n    height: 100%;\n    width: 100%;\n    box-shadow: 0 4px 4px rgb(0 0 0 / 35%);\n    box-sizing: border-box;\n    border-radius: 10px;\n    display: flex;\n    flex-direction: column;\n}\n.dashboard-tile__item-chart {\n    display: flex;\n    flex-direction: column;\n    flex-grow: 1;\n    padding-top: 9px;\n    min-height: 0;\n    overflow: hidden;\n}\n.dashboard-tile__item-chart-item {\n    display: flex;\n    align-items: baseline;\n    position: relative;\n    padding-bottom: 8px;\n    margin-bottom: 12px;\n}\n.dashboard-tile__item-chart-item-stage-progress {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    height: 4px;\n    border-radius: 10px;\n    z-index: 1;\n}\ndiv[data-id-color] {\n    background-color: #ffd66d;\n}\n\n/*div[data-id-color=\"0\"] {\n    background-color: #99CCFF;\n}\n\ndiv[data-id-stage=\"142\"] {\n    background-color: #00D669;\n}\n\ndiv[data-id-stage=\"143\"] {\n    background-color: #A5B0B9;\n}*/\n.dashboard-tile__item-chart-item-period-count {\n    color: #00d669;\n    margin-left: auto;\n}\n.dashboard-tile__item-chart-item-count {\n    font-weight: 700;\n    margin-left: 5px;\n}\n.dashboard-tile__item-chart-item-link {\n    color: white;\n}\n.pipeline-user-list-hidden {\n    display: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -24111,14 +24047,9 @@ var render = function() {
     "section",
     { staticClass: "dashboard-tile__item" },
     [
-      _c("top-tmp", {
-        attrs: {
-          pipelines: _vm.data.pipelines.list,
-          total: _vm.data.pipelines.totalAmount
-        }
-      }),
+      _c("top-tmp", { attrs: { total: _vm.data.totalAmount } }),
       _vm._v(" "),
-      _c("chart-tmp", { attrs: { pipelines: _vm.data.pipelines.list } })
+      _c("chart-tmp", { attrs: { users: _vm.data.leads } })
     ],
     1
   )
@@ -24148,10 +24079,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "pipeline-block-users",
-      attrs: { "data-id_pipeline-users": _vm.pipeline }
-    },
+    { staticClass: "pipeline-block-users" },
     _vm._l(_vm.users, function(user, index) {
       return _c(
         "div",
@@ -24219,74 +24147,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "dashboard-tile__item-chart" },
-    _vm._l(_vm.pipelines, function(pipeline, index) {
-      return _c(
-        "div",
-        { key: index, staticClass: "pipeline-block" },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "pipeline-block-title",
-              attrs: { "data-id_pipeline-title": index },
-              on: {
-                click: function($event) {
-                  return _vm.pipeline_visibility(index)
-                }
-              }
-            },
-            [
-              _c("h3", { staticClass: "pipeline-name" }, [
-                _vm._v("\n                " + _vm._s(pipeline.name) + ": "),
-                _c("span", { staticClass: "pipeline-amount" }, [
-                  _vm._v(_vm._s(pipeline.amount))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("transition", { attrs: { name: "fade" } }, [
-                _c(
-                  "div",
-                  {
-                    class: {
-                      dashboard_tile__item_chart_item_pipeline: !pipeline.show
-                    }
-                  },
-                  [
-                    !pipeline.show
-                      ? _c("div", {
-                          staticClass:
-                            "dashboard-tile__item-chart-item-progress-pipeline",
-                          style: { width: pipeline.amount + "%" }
-                        })
-                      : _vm._e()
-                  ]
-                )
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "transition",
-            { attrs: { name: "fade" } },
-            [
-              pipeline.show
-                ? _c("chart-item-tmp", {
-                    attrs: { users: pipeline.leads, pipeline: index }
-                  })
-                : _vm._e()
-            ],
-            1
-          )
-        ],
-        1
-      )
-    }),
-    0
-  )
+  return _c("div", { staticClass: "dashboard-tile__item-chart" }, [
+    _c(
+      "div",
+      { staticClass: "pipeline-block" },
+      [_c("chart-item-tmp", { attrs: { users: _vm.users } })],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24592,14 +24460,9 @@ var render = function() {
     "section",
     { staticClass: "dashboard-tile__item" },
     [
-      _c("top-tmp", {
-        attrs: {
-          pipelines: _vm.data.pipelines.list,
-          total: _vm.data.pipelines.totalAmount
-        }
-      }),
+      _c("top-tmp", { attrs: { total: _vm.data.totalAmount } }),
       _vm._v(" "),
-      _c("chart-tmp", { attrs: { pipelines: _vm.data.pipelines.list } })
+      _c("chart-tmp", { attrs: { users: _vm.data.leads } })
     ],
     1
   )
@@ -24629,10 +24492,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "pipeline-block-users",
-      attrs: { "data-id_pipeline-users": _vm.pipeline }
-    },
+    { staticClass: "pipeline-block-users" },
     _vm._l(_vm.users, function(user) {
       return _c(
         "div",
@@ -24699,74 +24559,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "dashboard-tile__item-chart" },
-    _vm._l(_vm.pipelines, function(pipeline, index) {
-      return _c(
-        "div",
-        { key: index, staticClass: "pipeline-block" },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "pipeline-block-title",
-              attrs: { "data-id_pipeline-title": index },
-              on: {
-                click: function($event) {
-                  return _vm.pipeline_visibility(index)
-                }
-              }
-            },
-            [
-              _c("h3", { staticClass: "pipeline-name" }, [
-                _vm._v("\n                " + _vm._s(pipeline.name) + ": "),
-                _c("span", { staticClass: "pipeline-amount" }, [
-                  _vm._v(_vm._s(pipeline.amount))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("transition", { attrs: { name: "fade" } }, [
-                _c(
-                  "div",
-                  {
-                    class: {
-                      dashboard_tile__item_chart_item_pipeline: !pipeline.show
-                    }
-                  },
-                  [
-                    !pipeline.show
-                      ? _c("div", {
-                          staticClass:
-                            "dashboard-tile__item-chart-item-progress-pipeline",
-                          style: { width: pipeline.amount + "%" }
-                        })
-                      : _vm._e()
-                  ]
-                )
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "transition",
-            { attrs: { name: "fade" } },
-            [
-              pipeline.show
-                ? _c("chart-item-tmp", {
-                    attrs: { users: pipeline.leads, pipeline: index }
-                  })
-                : _vm._e()
-            ],
-            1
-          )
-        ],
-        1
-      )
-    }),
-    0
-  )
+  return _c("div", { staticClass: "dashboard-tile__item-chart" }, [
+    _c(
+      "div",
+      { staticClass: "pipeline-block" },
+      [_c("chart-item-tmp", { attrs: { users: _vm.users } })],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24891,14 +24691,9 @@ var render = function() {
     "section",
     { staticClass: "dashboard-tile__item" },
     [
-      _c("top-tmp", {
-        attrs: {
-          pipelines: _vm.data.pipelines.list,
-          total: _vm.data.pipelines.totalAmount
-        }
-      }),
+      _c("top-tmp", { attrs: { total: _vm.data.totalAmount } }),
       _vm._v(" "),
-      _c("chart-tmp", { attrs: { groups: _vm.data.pipelines.list } })
+      _c("chart-tmp", { attrs: { users: _vm.data.users } })
     ],
     1
   )
@@ -24928,15 +24723,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "pipeline-block-users",
-      attrs: { "data-id_pipeline-users": _vm.group }
-    },
-    _vm._l(_vm.users, function(user) {
+    { staticClass: "pipeline-block-users" },
+    _vm._l(_vm.users, function(user, index) {
       return _c(
         "div",
         {
-          key: user.name,
+          key: index,
           staticStyle: { display: "grid", "grid-template-columns": "10% 90%" }
         },
         [
@@ -25020,74 +24812,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "dashboard-tile__item-chart" },
-    _vm._l(_vm.groups, function(group, index) {
-      return _c(
-        "div",
-        { key: index, staticClass: "group-block" },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "group-block-title",
-              attrs: { "data-id_group-title": index },
-              on: {
-                click: function($event) {
-                  return _vm.group_visibility(index)
-                }
-              }
-            },
-            [
-              _c("h3", { staticClass: "group-name" }, [
-                _vm._v("\n                " + _vm._s(group.name) + ": "),
-                _c("span", { staticClass: "group-amount" }, [
-                  _vm._v(_vm._s(group.amount))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("transition", { attrs: { name: "fade" } }, [
-                _c(
-                  "div",
-                  {
-                    class: {
-                      dashboard_tile__item_chart_item_group: !group.show
-                    }
-                  },
-                  [
-                    !group.show
-                      ? _c("div", {
-                          staticClass:
-                            "dashboard-tile__item-chart-item-progress-group",
-                          style: { width: group.amount + "%" }
-                        })
-                      : _vm._e()
-                  ]
-                )
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "transition",
-            { attrs: { name: "fade" } },
-            [
-              group.show
-                ? _c("chart-item-tmp", {
-                    attrs: { users: group.users, group: index }
-                  })
-                : _vm._e()
-            ],
-            1
-          )
-        ],
-        1
-      )
-    }),
-    0
-  )
+  return _c("div", { staticClass: "dashboard-tile__item-chart" }, [
+    _c(
+      "div",
+      { staticClass: "group-block" },
+      [_c("chart-item-tmp", { attrs: { users: _vm.users } })],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

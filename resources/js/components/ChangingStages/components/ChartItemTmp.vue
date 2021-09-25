@@ -1,5 +1,5 @@
 <template>
-    <div class="pipeline-block-users" :data-id_pipeline-users="pipeline">
+    <div class="pipeline-block-users">
         <div v-for="(user, index) in users" :key="index" class="dashboard-tile__item-chart-item">
             <div class="dashboard-tile__item-chart-item-title">
                 <span class="dashboard-tile__item-chart-item-link js-navigate-link">{{user.name}}:</span>
@@ -23,11 +23,6 @@
         props : {
             users : {
                 type : Array,
-                required : true
-            },
-
-            pipeline : {
-                type : String,
                 required : true
             }
         },
@@ -104,7 +99,7 @@
         background-color: #ffd66d;
     }
 
-    div[data-id-color="0"] {
+    /*div[data-id-color="0"] {
         background-color: #99CCFF;
     }
 
@@ -114,7 +109,7 @@
 
     div[data-id-stage="143"] {
         background-color: #A5B0B9;
-    }
+    }*/
 
     .dashboard-tile__item-chart-item-period-count {
         color: #00d669;

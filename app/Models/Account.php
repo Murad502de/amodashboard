@@ -34,4 +34,18 @@ class Account extends Model
 
         $this->save();
     }
+
+    public function getAuthData ()
+    {
+        $authData = self::all()->first();
+
+        return [
+            'subdomain' => $authData->subdomain,
+            'access_token' => $authData->access_token,
+            'redirect_uri' => $authData->redirect_uri,
+            'token_type' => $authData->token_type,
+            'refresh_token' => $authData->refresh_token,
+            'when_expires' => $authData->when_expires
+        ];
+    }
 }

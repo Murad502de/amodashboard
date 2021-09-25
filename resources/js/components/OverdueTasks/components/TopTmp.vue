@@ -23,11 +23,6 @@
 <script>
     export default {
         props : {
-            pipelines : {
-                type : Object,
-                required : true
-            },
-
             total : {
                 type : Number,
                 required : true

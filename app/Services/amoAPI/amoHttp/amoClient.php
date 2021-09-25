@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Log;
 
 class amoClient
 {
+    private $requestLimit;
+    private $requestCounter;
+    private $requestDelay;
     private $client;
     private $errors = [
         400 => 'Bad request',
@@ -21,6 +24,9 @@ class amoClient
 
     function __construct()
     {
+        $this->requestCounter = 0;
+        $this->requestLimit = 4;
+        $this->requestDelay = 0;
         $this->client = new Client();
     }
 
@@ -28,10 +34,31 @@ class amoClient
     {
         if ( !$requestData ) return;
 
-        echo 'amoClient@sendRequest : requestData<br>';
+        if ( $this->requestCounter >= $this->requestLimit )
+        {
+            Log::info(
+                __METHOD__,
+
+                [
+                    'message'  => 'request limit exceeded, requestCounter: ' . $this->requestCounter
+                ]
+            );
+
+            $this->requestDelay = 500;
+            $this->requestCounter = 0;
+
+            usleep( 500000 ); // FIXME es muss später entfernt werden
+        }
+        else
+        {
+            $this->requestDelay = 0;
+            $this->requestCounter++;
+        }
+
+        /*echo 'amoClient@sendRequest : requestData<br>';
         echo '<pre>';
         print_r( $requestData );
-        echo '</pre><br>';
+        echo '</pre><br>';*/
 
         try
         {
@@ -42,6 +69,7 @@ class amoClient
                     'headers' => $requestData[ 'headers' ],
                     'json'    => $requestData[ 'data' ] ?? null,
                     'query' => $requestData[ 'query' ] ?? null,
+                    //'delay' => $this->requestDelay // FIXME
                 ]
             );
 

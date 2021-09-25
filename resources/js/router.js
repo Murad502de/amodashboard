@@ -32,13 +32,13 @@ export default new VueRouter(
             },
 
             {
-                path : '/talktime',
-                component : TalkTime
+                path : '/usagetime',
+                component : UsageTime
             },
 
             {
-                path : '/usagetime',
-                component : UsageTime
+                path : '/talktime',
+                component : TalkTime
             }
         ],
 

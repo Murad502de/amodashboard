@@ -1,19 +1,7 @@
 <template>
     <div class="dashboard-tile__item-chart">
-        <div class="group-block"  v-for="(group, index) in groups" :key="index">
-            <div class="group-block-title" v-on:click="group_visibility(index)" :data-id_group-title="index">
-                <h3 class="group-name">
-                    {{ group.name }}:&nbsp;<span class="group-amount">{{ group.amount }}</span>
-                </h3>
-                <transition name="fade">
-                    <div v-bind:class="{ dashboard_tile__item_chart_item_group: !group.show }">
-                        <div v-if="!group.show" class="dashboard-tile__item-chart-item-progress-group" v-bind:style="{ width : group.amount + '%' }"></div>
-                    </div>
-                </transition>
-            </div>
-            <transition name="fade">
-                <chart-item-tmp v-if="group.show" :users="group.users" :group="index"/>
-            </transition>
+        <div class="group-block">
+            <chart-item-tmp :users="users"/>
         </div>
     </div>
 </template>
@@ -28,8 +16,8 @@
             }
         },
         props : {
-            groups : {
-                type : Object,
+            users : {
+                type : Array,
                 required : true
             }
         },

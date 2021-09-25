@@ -1,6 +1,6 @@
 <template>
-    <div class="pipeline-block-users" :data-id_pipeline-users="group">
-        <div v-for="user in users" :key="user.name" style="display: grid; grid-template-columns: 10% 90%;">
+    <div class="pipeline-block-users">
+        <div v-for="(user, index) in users" :key="index" style="display: grid; grid-template-columns: 10% 90%;">
             <div class="dashboard-tile-online__avatar" style="background-image: url(/v3/users/b262af3e-a67d-11eb-860b-00163ef260f3/avatar/?1626943666), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)" title="Мурад"></div>
 
             <div class="dashboard-tile__item-chart-item">
@@ -22,11 +22,6 @@
         props : {
             users : {
                 type : Array,
-                required : true
-            },
-
-            group : {
-                type : String,
                 required : true
             }
         },
