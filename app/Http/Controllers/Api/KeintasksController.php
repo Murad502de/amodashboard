@@ -14,32 +14,14 @@ class KeintasksController extends Controller
     private $authData;
     private $account;
 
-    function __construct()
+    function __construct () {}
+
+    public function getChart ()
     {
         $this->account = new Account();
         $this->authData = $this->account->getAuthData();
         $this->amo = new amoCRM( $this->authData );
-    }
 
-    public function handle ()
-    {
-        return [
-            'totalAmount' => 456,
-            'leads' => [
-                [ 'name' => 'Ivan', 'count' => 23, 'percent' => 34 ],
-                [ 'name' => 'Maxim', 'count' => 23, 'percent' => 12 ],
-                [ 'name' => 'Murad', 'count' => 23, 'percent' => 24 ],
-                [ 'name' => 'Maxim', 'count' => 23, 'percent' => 12 ],
-                [ 'name' => 'Murad', 'count' => 23, 'percent' => 24 ],
-                [ 'name' => 'Ivan', 'count' => 23, 'percent' => 14 ],
-                [ 'name' => 'Maxim', 'count' => 23, 'percent' => 12 ],
-                [ 'name' => 'Murad', 'count' => 23, 'percent' => 24 ],
-            ]
-        ];
-    }
-
-    public function getChart ()
-    {
         $userList = $this->amo->list( 'users' );
         $activeLeads = [
             'totalAmount' => null,
