@@ -76,12 +76,15 @@ class amoClient
         catch( \Exception $e )
         {
             Log::error(
-                "amoAPI << [ sendRequest ] : Error while sending request\r\n" .
-                "error code: " . $e->getCode() . "\r\n" .
-                "error message: " . $e->getMessage() . "\r\n" .
-                "request link: " . $requestData[ 'url' ] . "\r\n" .
-                "request data: " . \print_r( $requestData, true ) . "\r\n" //.
-                //"request response: " . \print_r( $response->getBody(), true ) . "\r\n"
+                __METHOD__,
+
+                [
+                    'message'  => "Error while sending request\r\n" .
+                                    "error code: " . $e->getCode() . "\r\n" .
+                                    "error message: " . $e->getMessage() . "\r\n" .
+                                    "request link: " . $requestData[ 'url' ] . "\r\n" .
+                                    "request data: " . \print_r( $requestData, true ) . "\r\n"
+                ]
             );
 
             return [

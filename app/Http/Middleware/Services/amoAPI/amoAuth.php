@@ -45,6 +45,14 @@ class amoAuth
 
                     $account->login( $accountData );
 
+                    Log::info(
+                        __METHOD__,
+
+                        [
+                            'message'  => 'access token updated'
+                        ]
+                    );
+
                     return $next( $request );
                 }
                 else
