@@ -16,7 +16,7 @@ class ChangingstagesController extends Controller
             __METHOD__,
 
             [
-                'message' => var_dump( $inputData )
+                'message' => print_r( $inputData, true )
             ]
         );
 
