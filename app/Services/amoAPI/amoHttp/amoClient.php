@@ -55,11 +55,6 @@ class amoClient
             $this->requestCounter++;
         }
 
-        /*echo 'amoClient@sendRequest : requestData<br>';
-        echo '<pre>';
-        print_r( $requestData );
-        echo '</pre><br>';*/
-
         try
         {
             $response = $this->client->request(
@@ -95,46 +90,27 @@ class amoClient
         }
     }
 
-    // FIXME
-    public function accessTokenVerification( $ServerAnfrageDaten )
-    {
-        if ( time() >= (int)$ServerAnfrageDaten[ 'when_expires' ] )
-        {
-            //echo "token ist verlauf\r\n";
-            return $this->accessTokenUpdate( $ServerAnfrageDaten );
-        }
-
-        return $ServerAnfrageDaten;
-    }
-
     /* =================================PUBLIC==METHODS================================= */
 
-    public function accessTokenUpdate( $ServerAnfrageDaten )
+    public function accessTokenUpdate( $data )
     {
-        //Формируем URL для запроса
-        $this->link = 'https://' . $ServerAnfrageDaten[ 'subdomain' ] . '.amocrm.ru/oauth2/access_token';
-
-        //Формируем Httpheaders для запроса
-        $this->Httpheaders = [
-            'Content-Type:application/json'
-        ];
-
-        /** Соберем данные для запроса */
-        $data = [
-            'client_id' => $ServerAnfrageDaten[ 'client_id' ],
-            'client_secret' => $ServerAnfrageDaten[ 'client_secret' ],
-            'grant_type' => 'refresh_token',
-            'refresh_token' => $ServerAnfrageDaten[ 'refresh_token' ],
-            'redirect_uri' => $ServerAnfrageDaten[ 'redirect_uri' ],
-        ];
-        
-        $response = $this->sendRequest( $data );
+        $response = $this->sendRequest(
+            [
+                'url'     => 'https://' . $data[ 'subdomain' ] . '.amocrm.ru/oauth2/access_token',
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'method'  => 'POST',
+                'data'    => [
+                    'client_id'     => $data[ 'client_id' ],
+                    'client_secret' => $data[ 'client_secret' ],
+                    'grant_type'    => 'refresh_token',
+                    'refresh_token' => $data[ 'refresh_token' ],
+                    'redirect_uri'  => $data[ 'redirect_uri' ],
+                ]
+            ]
+        );
 
         return $response;
-
-        /*echo '<pre>'; print_r( $data ); echo '</pre>';
-        echo '<br>';
-        echo $this->link . '<br>';
-        return true;*/
     }
 }

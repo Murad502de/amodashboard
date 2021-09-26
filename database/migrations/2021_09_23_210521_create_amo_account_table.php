@@ -15,6 +15,8 @@ class CreateAmoAccountTable extends Migration
     {
         Schema::create('amo_account', function (Blueprint $table) {
             $table->id();
+            $table->string( 'client_id' );
+            $table->string( 'client_secret' );
             $table->string( 'subdomain' );
             $table->text( 'access_token' );
             $table->string( 'redirect_uri' );

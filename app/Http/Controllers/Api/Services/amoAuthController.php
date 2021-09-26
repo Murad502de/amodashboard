@@ -42,6 +42,8 @@ class amoAuthController extends Controller
         if ( $response[ 'code' ] >= 200 && $response[ 'code' ] < 204 )
         {
             $accountData = [
+                'client_id'     => $request->all()[ 'client_id' ],
+                'client_secret' => config( 'services.amoCRM' )[ 'client_secret' ],
                 'subdomain'     => $this->authData[ 'subdomain' ],
                 'access_token'  => $response[ 'body' ][ 'access_token' ],
                 'redirect_uri'  => $this->authData[ 'redirect_uri' ],
@@ -51,8 +53,12 @@ class amoAuthController extends Controller
             ];
 
             $this->account->login( $accountData );
-        }
 
-        return response( [ 'OK' ], 200 );
+            return response( [ 'OK' ], 200 );
+        }
+        else
+        {
+            return response( [ 'Bad Request' ], 400 );
+        }
     }
 }

@@ -18,19 +18,21 @@ class Account extends Model
 
     public function login ( $accountData )
     {
-        echo 'Account@login : accountData<br>';
+        /*echo 'Account@login : accountData<br>';
         echo '<pre>';
         print_r( $accountData );
-        echo '</pre><br>';
+        echo '</pre><br>';*/
 
         self::truncate();
 
-        $this->subdomain = $accountData[ 'subdomain' ];
-        $this->access_token = $accountData[ 'access_token' ];
-        $this->redirect_uri = $accountData[ 'redirect_uri' ];
-        $this->token_type = $accountData[ 'token_type' ];
+        $this->client_id     = $accountData[ 'client_id' ];
+        $this->client_secret = $accountData[ 'client_secret' ];
+        $this->subdomain     = $accountData[ 'subdomain' ];
+        $this->access_token  = $accountData[ 'access_token' ];
+        $this->redirect_uri  = $accountData[ 'redirect_uri' ];
+        $this->token_type    = $accountData[ 'token_type' ];
         $this->refresh_token = $accountData[ 'refresh_token' ];
-        $this->when_expires = $accountData[ 'when_expires' ];
+        $this->when_expires  = $accountData[ 'when_expires' ];
 
         $this->save();
     }
@@ -42,12 +44,14 @@ class Account extends Model
         if ( !$authData ) return false;
 
         return [
-            'subdomain' => $authData->subdomain,
-            'access_token' => $authData->access_token,
-            'redirect_uri' => $authData->redirect_uri,
-            'token_type' => $authData->token_type,
+            'client_id'     => $authData->client_id,
+            'client_secret' => $authData->client_secret,
+            'subdomain'     => $authData->subdomain,
+            'access_token'  => $authData->access_token,
+            'redirect_uri'  => $authData->redirect_uri,
+            'token_type'    => $authData->token_type,
             'refresh_token' => $authData->refresh_token,
-            'when_expires' => $authData->when_expires
+            'when_expires'  => $authData->when_expires
         ];
     }
 }
