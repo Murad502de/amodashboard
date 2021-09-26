@@ -15,7 +15,7 @@ class ChangingstagesController extends Controller
         Log::info(
             __METHOD__,
 
-            $inputData
+            $inputData[ 'leads' ][ 'status' ][ 'modified_user_id' ]
         );
 
         /*return [
