@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\Services\amoAuthController;
 
 Route::get( '/keintasks', [ KeintasksController::class, 'getChart' ] );
 Route::get( '/activeleads', [ ActiveleadsController::class, 'getChart' ] );
-Route::get( '/overduetasks', [ OverduetasksController::class, 'handle' ] );
+Route::get( '/overduetasks', [ OverduetasksController::class, 'getChart' ] );
 Route::get( '/changingstages', function () {
     return [
         'totalAmount' => 456,
