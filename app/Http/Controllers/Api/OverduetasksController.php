@@ -24,6 +24,14 @@ class OverduetasksController extends Controller
 
     public function getList ()
     {
+        Log::info(
+            __METHOD__,
+
+            [
+                'message'  => 'cron was launched'
+            ]
+        );
+
         $taskList = $this->amo->listByQuery( 'task', 'filter[is_completed]' );
 
         if ( \count( $taskList ) )
@@ -66,14 +74,6 @@ class OverduetasksController extends Controller
 
     public function getChart ()
     {
-        Log::info(
-            __METHOD__,
-
-            [
-                'message'  => 'cron was launched'
-            ]
-        );
-
         $userList = $this->amo->list( 'users' );
         $overdueTasks = [
             'totalAmount' => null,
