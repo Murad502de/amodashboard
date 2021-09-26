@@ -66,14 +66,14 @@ class OverduetasksController extends Controller
     public function getChart ()
     {
         $userList = $this->amo->list( 'users' );
-        $activeLeads = [
+        $overdueTasks = [
             'totalAmount' => null,
-            'leads'       => []
+            'tasks'       => []
         ];
 
         if ( \count( $userList ) )
         {
-            $activeLeads[ 'totalAmount' ] = Tasks::all()->count();
+            $overdueTasks[ 'totalAmount' ] = Tasks::all()->count();
 
             for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
             {
@@ -87,15 +87,18 @@ class OverduetasksController extends Controller
                     //echo 'userId: ' . $userId . ' <br>';
                     //echo 'userName: ' . $userName . ' <br><br>';
 
-                    $leadCount = Tasks::where( 'responsible_user_id', $userId )->where( 'status_id', '!=', 142 )->where( 'status_id', '!=', 143 )->count();
+                    $overdueTasksCount = Tasks::where( 'responsible_user_id', $userId )
+                                                ->where( 'is_completed', 0 )
+                                                ->where( 'complete_till', '<', \time() )
+                                                ->count();
 
-                    if ( $leadCount )
+                    if ( $overdueTasksCount )
                     {
-                        $percent = $leadCount / $activeLeads[ 'totalAmount' ] * 100;
+                        $percent = $overdueTasksCount / $overdueTasks[ 'totalAmount' ] * 100;
 
-                        $activeLeads[ 'leads' ][] = [
+                        $overdueTasks[ 'tasks' ][] = [
                             'name' => $userName,
-                            'count' => $leadCount,
+                            'count' => $overdueTasksCount,
                             'percent' => $percent
                         ];
                     }
@@ -103,11 +106,11 @@ class OverduetasksController extends Controller
             }
         }
 
-        /*echo 'ActiveleadsController@getList : activeLeads<br>';
+        /*echo 'OverduetasksController@getList : overdueTasks<br>';
         echo '<pre>';
-        print_r( $activeLeads );
+        print_r( $overdueTasks );
         echo '</pre><br>';*/
 
-        return $activeLeads;
+        return $overdueTasks;
     }
 }
