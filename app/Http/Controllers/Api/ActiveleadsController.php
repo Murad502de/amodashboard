@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Leads;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Services\amoAPI\amoCRM;
-use App\Models\Account;
-use App\Models\Leads;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class ActiveleadsController extends Controller
@@ -56,6 +57,14 @@ class ActiveleadsController extends Controller
 
     public function getList ()
     {
+        Log::info(
+            __METHOD__,
+
+            [
+                'message'  => 'cron was launched'
+            ]
+        );
+
         $leadList = $this->amo->list( 'lead' );
 
         if ( \count( $leadList ) )

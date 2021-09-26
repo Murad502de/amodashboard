@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Tasks;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Services\amoAPI\amoCRM;
-use App\Models\Account;
-use App\Models\Tasks;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class OverduetasksController extends Controller
@@ -65,6 +66,14 @@ class OverduetasksController extends Controller
 
     public function getChart ()
     {
+        Log::info(
+            __METHOD__,
+
+            [
+                'message'  => 'cron was launched'
+            ]
+        );
+
         $userList = $this->amo->list( 'users' );
         $overdueTasks = [
             'totalAmount' => null,
