@@ -101,4 +101,11 @@ class ChangingstagesController extends Controller
 
         return $changingstagesLeads;
     }
+
+    public function cleanDb ()
+    {
+        Changingstages::truncate();
+
+        return response( [ 'OK' ], 200 );
+    }
 }
