@@ -158,6 +158,10 @@ class amoCRM
             case 'users' :
                 $api = '/api/v4/users';
             break;
+
+            case 'task' :
+                $api = '/api/v4/tasks';
+            break;
             
             default:
             break;
