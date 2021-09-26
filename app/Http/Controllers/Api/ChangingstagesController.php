@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Changingstages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -11,12 +12,19 @@ class ChangingstagesController extends Controller
     public function hook ( Request $request )
     {
         $inputData = $request->all();
+        $modified_user_id = $inputData[ 'leads' ][ 'status' ][ 0 ][ 'modified_user_id' ];
 
         Log::info(
             __METHOD__,
 
             [
-                'message' => $inputData[ 'leads' ][ 'status' ][ 0 ][ 'modified_user_id' ]
+                'message' => $modified_user_id
+            ]
+        );
+
+        Changingstages::create(
+            [
+                'modified_user_id' => $modified_user_id,
             ]
         );
 
