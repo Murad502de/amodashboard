@@ -49,6 +49,14 @@ class amoAuth
                 }
                 else
                 {
+                    Log::error(
+                        __METHOD__,
+
+                        [
+                            'message'  => 'Login error with code: ' . $response[ 'code' ]
+                        ]
+                    );
+
                     return response( [ 'Bad Request' ], 400 );
                 }
             }
@@ -59,6 +67,14 @@ class amoAuth
         }
         else
         {
+            Log::warning(
+                __METHOD__,
+
+                [
+                    'message'  => 'Login data not found'
+                ]
+            );
+
             return response( [ 'Login data not found' ], 404 );
         }
     }
