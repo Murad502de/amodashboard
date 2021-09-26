@@ -15,10 +15,14 @@ class ChangingstagesController extends Controller
         Log::info(
             __METHOD__,
 
-            $inputData[ 'leads' ][ 'status' ][ 'modified_user_id' ]
+            [
+                'message' => var_dump( $inputData )
+            ]
         );
 
-        /*return [
+        /*
+        $inputData[ 'leads' ][ 'status' ][ 'modified_user_id' ]
+        return [
             'totalAmount' => 456,
             'leads' => [
                 [ 'name' => 'User 1', 'count' => 23, 'percent' => 14, 'stage' => 4562584 ],
