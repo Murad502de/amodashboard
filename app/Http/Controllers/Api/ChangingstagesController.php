@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Changingstages;
+use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Models\Changingstages;
+use App\Services\amoAPI\amoCRM;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
@@ -49,19 +51,54 @@ class ChangingstagesController extends Controller
 
     public function getChart ()
     {
-        return [
-            'totalAmount' => 456,
-            'users' => [
-                [ 'name' => 'user_1', 'count' => '1h 32m', 'percent' => 14 ],
-                [ 'name' => 'user_2', 'count' => '1h 32m', 'percent' => 12 ],
-                [ 'name' => 'user_3', 'count' => '1h 32m', 'percent' => 24 ],
-                [ 'name' => 'user_4', 'count' => '1h 32m', 'percent' => 34 ],
-                [ 'name' => 'user_5', 'count' => '1h 32m', 'percent' => 14 ],
-                [ 'name' => 'user_6', 'count' => '1h 32m', 'percent' => 12 ],
-                [ 'name' => 'user_7', 'count' => '1h 32m', 'percent' => 24 ],
-                [ 'name' => 'user_8', 'count' => '1h 32m', 'percent' => 34 ],
-                [ 'name' => 'user_9', 'count' => '1h 32m', 'percent' => 34 ],
-            ]
+        $this->account = new Account();
+        $this->authData = $this->account->getAuthData();
+        $this->amo = new amoCRM( $this->authData );
+
+        $userList = $this->amo->list( 'users' );
+        $changingstagesLeads = [
+            'totalAmount' => null,
+            'users'       => []
         ];
+
+        if ( \count( $userList ) )
+        {
+            $changingstagesLeads[ 'totalAmount' ] = Changingstages::all()->count();
+
+            for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
+            {
+                $users = $userList[ $userListIndex ][ '_embedded' ][ 'users' ];
+
+                for ( $userIndex = 0; $userIndex < \count( $users ); $userIndex++ )
+                {
+                    $userId = ( int ) $users[ $userIndex ][ 'id' ];
+                    $userName = $users[ $userIndex ][ 'name' ];
+
+                    //echo 'userId: ' . $userId . ' <br>';
+                    //echo 'userName: ' . $userName . ' <br><br>';
+
+                    $changingstagesCount = Changingstages::where( 'modified_user_id', $userId )
+                                        ->count();
+
+                    if ( $changingstagesCount )
+                    {
+                        $percent = $changingstagesCount / $changingstagesLeads[ 'totalAmount' ] * 100;
+
+                        $changingstagesLeads[ 'users' ][] = [
+                            'name' => $userName,
+                            'count' => $changingstagesCount,
+                            'percent' => $percent
+                        ];
+                    }
+                }
+            }
+        }
+
+        /*echo 'ChangingstagesleadsController@getList : ChangingstagesLeads<br>';
+        echo '<pre>';
+        print_r( $ChangingstagesLeads );
+        echo '</pre><br>';*/
+
+        return $changingstagesLeads;
     }
 }
