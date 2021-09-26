@@ -15,12 +15,7 @@ class ActiveleadsController extends Controller
     private $authData;
     private $account;
 
-    function __construct()
-    {
-        $this->account = new Account();
-        $this->authData = $this->account->getAuthData();
-        $this->amo = new amoCRM( $this->authData );
-    }
+    function __construct() {}
 
     public function getList ()
     {
@@ -31,6 +26,10 @@ class ActiveleadsController extends Controller
                 'message'  => 'cron was launched'
             ]
         );
+
+        $this->account = new Account();
+        $this->authData = $this->account->getAuthData();
+        $this->amo = new amoCRM( $this->authData );
 
         $leadList = $this->amo->list( 'lead' );
 
@@ -76,6 +75,10 @@ class ActiveleadsController extends Controller
 
     public function getChart ()
     {
+        $this->account = new Account();
+        $this->authData = $this->account->getAuthData();
+        $this->amo = new amoCRM( $this->authData );
+
         $userList = $this->amo->list( 'users' );
         $activeLeads = [
             'totalAmount' => null,

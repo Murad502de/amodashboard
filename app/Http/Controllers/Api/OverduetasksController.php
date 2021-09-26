@@ -15,12 +15,7 @@ class OverduetasksController extends Controller
     private $authData;
     private $account;
 
-    function __construct()
-    {
-        $this->account = new Account();
-        $this->authData = $this->account->getAuthData();
-        $this->amo = new amoCRM( $this->authData );
-    }
+    function __construct() {}
 
     public function getList ()
     {
@@ -31,6 +26,10 @@ class OverduetasksController extends Controller
                 'message'  => 'cron was launched'
             ]
         );
+
+        $this->account = new Account();
+        $this->authData = $this->account->getAuthData();
+        $this->amo = new amoCRM( $this->authData );
 
         $taskList = $this->amo->listByQuery( 'task', 'filter[is_completed]' );
 
@@ -74,6 +73,10 @@ class OverduetasksController extends Controller
 
     public function getChart ()
     {
+        $this->account = new Account();
+        $this->authData = $this->account->getAuthData();
+        $this->amo = new amoCRM( $this->authData );
+
         $userList = $this->amo->list( 'users' );
         $overdueTasks = [
             'totalAmount' => null,
