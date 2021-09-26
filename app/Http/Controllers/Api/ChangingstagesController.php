@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class ChangingstagesController extends Controller
 {
-    public function getChart ( Request $request )
+    public function hook ( Request $request )
     {
         $inputData = $request->all();
 
