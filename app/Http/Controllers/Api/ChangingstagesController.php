@@ -15,7 +15,9 @@ class ChangingstagesController extends Controller
         Log::info(
             __METHOD__,
 
-            $inputData
+            [
+                'fgefifej', 'fjfnfiv'
+            ]
         );
 
         /*return [
