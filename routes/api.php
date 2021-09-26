@@ -20,7 +20,7 @@ Route::middleware( [ 'amoAuth' ] )->group( function () {
 
     Route::get( '/cron/activeleads', [ ActiveleadsController::class, 'getList' ] );
     Route::get( '/cron/overduetasks', [ OverduetasksController::class, 'getList' ] );
-    Route::post( '/cron/changingstages', [ ChangingstagesController::class, 'cleanDb' ] );
+    Route::get( '/cron/changingstages', [ ChangingstagesController::class, 'cleanDb' ] );
     Route::post( '/hook/changingstages', [ ChangingstagesController::class, 'hook' ] );
 } );
 
