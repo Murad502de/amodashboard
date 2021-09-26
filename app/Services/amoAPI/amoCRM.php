@@ -92,7 +92,7 @@ class amoCRM
         if ( !$entity ) return false;
 
         $page = 1;
-        $leadList = [];
+        $entityList = [];
         $api = '';
 
         switch ( $entity )
@@ -132,9 +132,60 @@ class amoCRM
 
             if ( $response[ 'code' ] < 200 || $response[ 'code' ] >= 204 ) break;
 
-            $leadList[ $page - 1 ] = $response[ 'body' ];
+            $entityList[ $page - 1 ] = $response[ 'body' ];
         }
 
-        return $leadList;
+        return $entityList;
+    }
+
+    public function listByQuery ( $entity, $query )
+    {
+        if ( !$entity ) return false;
+
+        $page = 1;
+        $entityList = [];
+        $api = '';
+
+        switch ( $entity )
+        {
+            case 'lead' :
+                $api = '/api/v4/leads';
+            break;
+
+            case 'contact' :
+            break;
+
+            case 'users' :
+                $api = '/api/v4/users';
+            break;
+            
+            default:
+            break;
+        }
+
+        for ( ;; $page++ )
+        {
+            //usleep( 500000 );
+
+            $url = 'https://' . $this->amoData[ 'subdomain' ] . '.amocrm.ru' . $api . '?limit=' . $this->pageItemLimit . '&page=' . $page . '&' . $query;
+
+            $response = $this->client->sendRequest(
+
+                [
+                    'url'     => $url,
+                    'headers' => [
+                        'Content-Type'  => 'application/json',
+                        'Authorization' => 'Bearer ' . $this->amoData[ 'access_token' ]
+                    ],
+                    'method'  => 'GET'
+                ]
+            );
+
+            if ( $response[ 'code' ] < 200 || $response[ 'code' ] >= 204 ) break;
+
+            $entityList[ $page - 1 ] = $response[ 'body' ];
+        }
+
+        return $entityList;
     }
 }

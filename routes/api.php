@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\KeintasksController;
 use App\Http\Controllers\Api\ActiveleadsController;
+use App\Http\Controllers\Api\OverduetasksController;
 
 use App\Http\Controllers\Api\Services\amoAuthController;
 
 Route::get( '/keintasks', [ KeintasksController::class, 'getChart' ] );
 Route::get( '/activeleads', [ ActiveleadsController::class, 'getChart' ] );
-Route::get( '/overduetasks', [ ActiveleadsController::class, 'handle' ] );
+Route::get( '/overduetasks', [ OverduetasksController::class, 'handle' ] );
 Route::get( '/changingstages', function () {
     return [
         'totalAmount' => 456,
@@ -44,9 +45,10 @@ Route::get( '/usagetime', function () {
     ];
 } );
 
-Route::get( '/auth', [ amoAuthController::class, 'auth' ] );
-
 Route::get( '/cron/activeleads', [ ActiveleadsController::class, 'getList' ] );
+Route::get( '/cron/overduetasks', [ OverduetasksController::class, 'getList' ] );
+
+Route::get( '/auth', [ amoAuthController::class, 'auth' ] );
 
 Route::get( '/test', function () {
     return 'test api route';
