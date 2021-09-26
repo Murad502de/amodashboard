@@ -24462,7 +24462,7 @@ var render = function() {
     [
       _c("top-tmp", { attrs: { total: _vm.data.totalAmount } }),
       _vm._v(" "),
-      _c("chart-tmp", { attrs: { users: _vm.data.leads } })
+      _c("chart-tmp", { attrs: { users: _vm.data.tasks } })
     ],
     1
   )
