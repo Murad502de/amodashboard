@@ -16,12 +16,11 @@ class ChangingstagesController extends Controller
             __METHOD__,
 
             [
-                'message' => print_r( $inputData, true )
+                'message' => $inputData[ 'leads' ][ 'status' ][ 0 ][ 'modified_user_id' ]
             ]
         );
 
         /*
-        $inputData[ 'leads' ][ 'status' ][ 'modified_user_id' ]
         return [
             'totalAmount' => 456,
             'leads' => [
