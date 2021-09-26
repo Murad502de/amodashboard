@@ -18,7 +18,7 @@ class ChangingstagesController extends Controller
             $inputData
         );
 
-        return [
+        /*return [
             'totalAmount' => 456,
             'leads' => [
                 [ 'name' => 'User 1', 'count' => 23, 'percent' => 14, 'stage' => 4562584 ],
@@ -31,6 +31,8 @@ class ChangingstagesController extends Controller
                 [ 'name' => 'User 8', 'count' => 23, 'percent' => 34, 'stage' => 142 ],
                 [ 'name' => 'User 9', 'count' => 23, 'percent' => 34, 'stage' => 143 ],
             ]
-        ];
+        ];*/
+
+        return response( [ 'OK' ], 200 );
     }
 }
