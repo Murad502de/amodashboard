@@ -90,7 +90,9 @@ class UsagetimeController extends Controller
                     $userId = ( int ) $users[ $userIndex ][ 'id' ];
                     $userName = $users[ $userIndex ][ 'name' ];
 
-                    $online = Usagetime::where( 'user_id', $userId )->first();
+                    $online = Usagetime::where( 'user_id', $userId )
+                                        ->first()
+                                        ->online;
 
                     if ( $online )
                     {
