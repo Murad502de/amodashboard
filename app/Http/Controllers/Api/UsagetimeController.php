@@ -48,6 +48,9 @@ class UsagetimeController extends Controller
                         'messsage' => 'user muss aktualisiert werden'
                     ]
                 );
+
+                $user->online += 60;
+                $user->save(); 
             }
             else
             {
