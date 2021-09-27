@@ -24,7 +24,7 @@ class UsagetimeController extends Controller
             ]
         );
 
-        $user = Usagetime::where( 'responsible_user_id', $userId )->first();
+        $user = Usagetime::where( 'user_id', $userId )->first();
 
         if ( $user )
         {
