@@ -53,23 +53,59 @@ class UsagetimeController extends Controller
         return response( [ 'OK' ], 200 );
     }
 
-    public function cleanDb () {}
+    public function cleanDb ()
+    {
+        Usagetime::truncate();
+
+        return response( [ 'OK' ], 200 );
+    }
 
     public function getChart ()
     {
-        return [
-            'totalAmount' => 456,
-            'users' => [
-                [ 'name' => 'user_1', 'count' => '1h 32m', 'percent' => 14 ],
-                [ 'name' => 'user_2', 'count' => '1h 32m', 'percent' => 12 ],
-                [ 'name' => 'user_3', 'count' => '1h 32m', 'percent' => 24 ],
-                [ 'name' => 'user_4', 'count' => '1h 32m', 'percent' => 34 ],
-                [ 'name' => 'user_5', 'count' => '1h 32m', 'percent' => 14 ],
-                [ 'name' => 'user_6', 'count' => '1h 32m', 'percent' => 12 ],
-                [ 'name' => 'user_7', 'count' => '1h 32m', 'percent' => 24 ],
-                [ 'name' => 'user_8', 'count' => '1h 32m', 'percent' => 34 ],
-                [ 'name' => 'user_9', 'count' => '1h 32m', 'percent' => 34 ],
-            ]
+        $this->account = new Account();
+        $this->authData = $this->account->getAuthData();
+        $this->amo = new amoCRM( $this->authData );
+
+        $userList = $this->amo->list( 'users' );
+        $usagetimeUserList = [
+            'totalAmount' => null,
+            'users'       => []
         ];
+
+        if ( \count( $userList ) )
+        {
+            $usagetimeUserList[ 'totalAmount' ] = Usagetime::all()->sum( 'online' );
+
+            for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
+            {
+                $users = $userList[ $userListIndex ][ '_embedded' ][ 'users' ];
+
+                for ( $userIndex = 0; $userIndex < \count( $users ); $userIndex++ )
+                {
+                    $userId = ( int ) $users[ $userIndex ][ 'id' ];
+                    $userName = $users[ $userIndex ][ 'name' ];
+
+                    $online = Usagetime::where( 'user_id', $userId )->first();
+
+                    if ( $online )
+                    {
+                        $percent = $online / $usagetimeUserList[ 'totalAmount' ] * 100;
+
+                        $usagetimeUserList[ 'users' ][] = [
+                            'name' => $userName,
+                            'count' => $online,
+                            'percent' => $percent
+                        ];
+                    }
+                }
+            }
+        }
+
+        echo 'UsagetimeController@getList : usagetimeUserList<br>';
+        echo '<pre>';
+        print_r( $usagetimeUserList );
+        echo '</pre><br>';
+
+        return $usagetimeUserList;
     }
 }
