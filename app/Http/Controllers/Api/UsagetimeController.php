@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class UsagetimeController extends Controller
 {
-    public function report ( Request $request )
+    public function hook ( Request $request )
     {
         $inputData = $request->all();
 
@@ -20,7 +20,11 @@ class UsagetimeController extends Controller
 
             $inputData
         );
+
+        return response( [ 'OK' ], 200 );
     }
+
+    public function cleanDb () {}
 
     public function getChart ()
     {

@@ -2277,7 +2277,7 @@ __webpack_require__.r(__webpack_exports__);
           console.log('success');
           _this.amo_data = response.data;
         });
-      }, 5000);
+      }, 15000);
     }
   }
 });

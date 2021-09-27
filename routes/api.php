@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\UsagetimeController;
 
 use App\Http\Controllers\Api\Services\amoAuthController;
 
+Route::get( '/auth', [ amoAuthController::class, 'auth' ] );
+
 Route::middleware( [ 'amoAuth' ] )->group( function () {
     Route::get( '/keintasks', [ KeintasksController::class, 'getChart' ] );
     Route::get( '/activeleads', [ ActiveleadsController::class, 'getChart' ] );
@@ -21,11 +23,8 @@ Route::middleware( [ 'amoAuth' ] )->group( function () {
     Route::get( '/cron/activeleads', [ ActiveleadsController::class, 'getList' ] );
     Route::get( '/cron/overduetasks', [ OverduetasksController::class, 'getList' ] );
     Route::get( '/cron/changingstages', [ ChangingstagesController::class, 'cleanDb' ] );
+    Route::get( '/cron/usagetime', [ UsagetimeController::class, 'cleanDb' ] );
+
     Route::post( '/hook/changingstages', [ ChangingstagesController::class, 'hook' ] );
-} );
-
-Route::get( '/auth', [ amoAuthController::class, 'auth' ] );
-
-Route::get( '/test', function () {
-    return 'test api route';
+    Route::post( '/hook/usagetime', [ UsagetimeController::class, 'hook' ] );
 } );

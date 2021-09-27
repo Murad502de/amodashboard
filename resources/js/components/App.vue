@@ -44,7 +44,7 @@
                                 this.amo_data = response.data;
                             }
                         );
-                }, 5000);
+                }, 15000);
             }
         }
     }
