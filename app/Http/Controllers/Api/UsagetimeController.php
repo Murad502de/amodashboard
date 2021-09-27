@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Models\Usagetime;
+use App\Services\amoAPI\amoCRM;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class UsagetimeController extends Controller
 {
+    public function report ( Request $request )
+    {
+        $inputData = $request->all();
+
+        Log::info(
+            __METHOD__,
+
+            $inputData
+        );
+    }
+
     public function getChart ()
     {
         return [

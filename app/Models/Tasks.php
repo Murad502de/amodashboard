@@ -9,6 +9,7 @@ class Tasks extends Model
 {
     use HasFactory;
 
+    protected $table = 'tasks';
     protected $fillable = [
         'responsible_user_id',
         'is_completed',

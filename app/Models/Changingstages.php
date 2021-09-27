@@ -9,6 +9,7 @@ class Changingstages extends Model
 {
     use HasFactory;
 
+    protected $table = 'changingstages';
     protected $fillable = [
         'modified_user_id'
     ];
