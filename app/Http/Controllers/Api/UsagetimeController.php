@@ -28,14 +28,37 @@ class UsagetimeController extends Controller
 
         if ( $user )
         {
+            $lastUserUpdate = $user->updated_at->getTimestamp();
+
             Log::info(
                 __METHOD__,
 
                 [
                     'user' => 'ist gefunden',
-                    'last_update' => $user->updated_at->getTimestamp()
+                    'last_update' => $lastUserUpdate
                 ]
             );
+
+            if ( \time() - $lastUserUpdate > 60 )
+            {
+                Log::info(
+                    __METHOD__,
+
+                    [
+                        'messsage' => 'user muss aktualisiert werden'
+                    ]
+                );
+            }
+            else
+            {
+                Log::info(
+                    __METHOD__,
+
+                    [
+                        'messsage' => 'user kann nicht aktualisiert werden'
+                    ]
+                );
+            }
         }
         else
         {
