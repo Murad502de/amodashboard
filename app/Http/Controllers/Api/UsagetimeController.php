@@ -33,7 +33,7 @@ class UsagetimeController extends Controller
 
                 [
                     'user' => 'ist gefunden',
-                    'last_update' => $user->updated_at
+                    'last_update' => $user->updated_at->getTimestamp()
                 ]
             );
         }
