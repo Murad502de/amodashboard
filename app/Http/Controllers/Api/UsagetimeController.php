@@ -102,10 +102,10 @@ class UsagetimeController extends Controller
             }
         }
 
-        echo 'UsagetimeController@getList : usagetimeUserList<br>';
+        /*echo 'UsagetimeController@getList : usagetimeUserList<br>';
         echo '<pre>';
         print_r( $usagetimeUserList );
-        echo '</pre><br>';
+        echo '</pre><br>';*/
 
         return $usagetimeUserList;
     }
