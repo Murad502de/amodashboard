@@ -94,7 +94,7 @@ class UsagetimeController extends Controller
 
                         $usagetimeUserList[ 'users' ][] = [
                             'name' => $userName,
-                            'count' => $online,
+                            'count' => $this->getDauerStr( $online ),
                             'percent' => $percent
                         ];
                     }
@@ -108,5 +108,16 @@ class UsagetimeController extends Controller
         echo '</pre><br>';*/
 
         return $usagetimeUserList;
+    }
+
+    public function getDauerStr ( $s )
+    {
+        $h = intdiv( $s, 3600 );
+        $m = intdiv(( $s - 3600 * $h ), 60);
+
+        $str = $h ? $h . ' ч. ' : '';
+        $str .= $m ? $m . ' м.' : '';
+
+        return $str;
     }
 }
