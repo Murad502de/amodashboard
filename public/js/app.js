@@ -2916,6 +2916,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     users: {
@@ -24734,9 +24740,9 @@ var render = function() {
         [
           _c("div", {
             staticClass: "dashboard-tile-online__avatar",
-            staticStyle: {
+            style: {
               "background-image":
-                "url(/v3/users/b262af3e-a67d-11eb-860b-00163ef260f3/avatar/?1626943666), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)"
+                "url(/v3/users/b262af3e-a67d-11eb-860b-00163ef260f3/avatar/?{{user.user_id}}), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)"
             },
             attrs: { title: "Мурад" }
           }),

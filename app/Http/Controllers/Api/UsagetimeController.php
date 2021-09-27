@@ -93,6 +93,7 @@ class UsagetimeController extends Controller
                         $percent = $online / $usagetimeUserList[ 'totalAmount' ] * 100;
 
                         $usagetimeUserList[ 'users' ][] = [
+                            'user_id' => $userId,
                             'name' => $userName,
                             'count' => $this->getDauerStr( $online ),
                             'percent' => $percent
