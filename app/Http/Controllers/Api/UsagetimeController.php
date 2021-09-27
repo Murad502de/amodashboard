@@ -76,11 +76,6 @@ class UsagetimeController extends Controller
         {
             $usagetimeUserList[ 'totalAmount' ] = Usagetime::all()->sum( 'online' );
 
-            echo 'UsagetimeController@getList : usagetimeUserList<br>';
-            echo '<pre>';
-            print_r( $usagetimeUserList );
-            echo '</pre><br>';
-
             for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
             {
                 $users = $userList[ $userListIndex ][ '_embedded' ][ 'users' ];
