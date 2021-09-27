@@ -14,11 +14,14 @@ class UsagetimeController extends Controller
     public function hook ( Request $request )
     {
         $inputData = $request->all();
+        $userId = $inputData[ 'user_id' ];
 
         Log::info(
             __METHOD__,
 
-            $inputData
+            [
+                'user ID: ' => $userId
+            ]
         );
 
         return response( [ 'OK' ], 200 );
