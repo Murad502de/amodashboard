@@ -85,12 +85,11 @@ class UsagetimeController extends Controller
                     $userId = ( int ) $users[ $userIndex ][ 'id' ];
                     $userName = $users[ $userIndex ][ 'name' ];
 
-                    $online = Usagetime::where( 'user_id', $userId )
-                                        ->first()
-                                        ->online;
+                    $currentUser = Usagetime::where( 'user_id', $userId )->first();
 
-                    if ( $online )
+                    if ( $currentUser )
                     {
+                        $online = $currentUser->online;
                         $percent = $online / $usagetimeUserList[ 'totalAmount' ] * 100;
 
                         $usagetimeUserList[ 'users' ][] = [
