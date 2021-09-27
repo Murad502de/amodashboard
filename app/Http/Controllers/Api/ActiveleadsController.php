@@ -56,21 +56,9 @@ class ActiveleadsController extends Controller
                             'closest_task_at'     => $closest_task_at
                         ]
                     );
-
-                    /*echo $leadListIndex . ' <br>';
-                    echo 'responsible_user_id: ' . $responsible_user_id . '<br>';
-                    echo 'status_id: ' . $status_id . '<br>';
-                    echo 'pipeline_id: ' . $pipeline_id . '<br>';
-                    echo 'closest_task_at: ' . $closest_task_at . '<br>';
-                    echo '<br>';*/
                 }
             }
         }
-
-        /*echo 'ActiveleadsController@getList : leadList<br>';
-        echo '<pre>';
-        print_r( $leadList );
-        echo '</pre><br>';*/
     }
 
     public function getChart ()
@@ -98,10 +86,10 @@ class ActiveleadsController extends Controller
                     $userId = ( int ) $users[ $userIndex ][ 'id' ];
                     $userName = $users[ $userIndex ][ 'name' ];
 
-                    //echo 'userId: ' . $userId . ' <br>';
-                    //echo 'userName: ' . $userName . ' <br><br>';
-
-                    $leadCount = Leads::where( 'responsible_user_id', $userId )->where( 'status_id', '!=', 142 )->where( 'status_id', '!=', 143 )->count();
+                    $leadCount = Leads::where( 'responsible_user_id', $userId )
+                                        ->where( 'status_id', '!=', 142 )
+                                        ->where( 'status_id', '!=', 143 )
+                                        ->count();
 
                     if ( $leadCount )
                     {
@@ -116,11 +104,6 @@ class ActiveleadsController extends Controller
                 }
             }
         }
-
-        /*echo 'ActiveleadsController@getList : activeLeads<br>';
-        echo '<pre>';
-        print_r( $activeLeads );
-        echo '</pre><br>';*/
 
         return $activeLeads;
     }

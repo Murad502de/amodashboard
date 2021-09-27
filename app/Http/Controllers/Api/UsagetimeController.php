@@ -24,6 +24,29 @@ class UsagetimeController extends Controller
             ]
         );
 
+        $user = Usagetime::where( 'responsible_user_id', $userId )->first();
+
+        if ( $user )
+        {
+            Log::info(
+                __METHOD__,
+
+                [
+                    'user: ' => 'ist gefunden'
+                ]
+            );
+        }
+        else
+        {
+            Log::info(
+                __METHOD__,
+
+                [
+                    'user: ' => 'ist nicht gefunden'
+                ]
+            );
+        }
+
         return response( [ 'OK' ], 200 );
     }
 
