@@ -45,6 +45,13 @@ class UsagetimeController extends Controller
                     'user: ' => 'ist nicht gefunden'
                 ]
             );
+
+            Usagetime::create(
+                [
+                    'user_id' => $userId,
+                    'online' => 60,
+                ]
+            );
         }
 
         return response( [ 'OK' ], 200 );
