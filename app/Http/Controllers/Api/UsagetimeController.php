@@ -16,13 +16,7 @@ class UsagetimeController extends Controller
         $inputData = $request->all();
         $userId = $inputData[ 'user_id' ];
 
-        Log::info(
-            __METHOD__,
-
-            [
-                'user ID' => $userId
-            ]
-        );
+        Log::info( __METHOD__, [ 'user ID' => $userId ] );
 
         $user = Usagetime::where( 'user_id', $userId )->first();
 
@@ -30,48 +24,23 @@ class UsagetimeController extends Controller
         {
             $lastUserUpdate = $user->updated_at->getTimestamp();
 
-            Log::info(
-                __METHOD__,
+            Log::info( __METHOD__, [ 'user' => 'ist gefunden', 'last_update' => $lastUserUpdate ] );
 
-                [
-                    'user' => 'ist gefunden',
-                    'last_update' => $lastUserUpdate
-                ]
-            );
-
-            if ( \time() - $lastUserUpdate > 60 )
+            if ( \time() - $lastUserUpdate >= 60 )
             {
-                Log::info(
-                    __METHOD__,
-
-                    [
-                        'messsage' => 'user muss aktualisiert werden'
-                    ]
-                );
+                Log::info( __METHOD__, [ 'messsage' => 'user muss aktualisiert werden' ] );
 
                 $user->online += 60;
                 $user->save(); 
             }
             else
             {
-                Log::info(
-                    __METHOD__,
-
-                    [
-                        'messsage' => 'user kann nicht aktualisiert werden'
-                    ]
-                );
+                Log::info( __METHOD__, [ 'messsage' => 'user kann nicht aktualisiert werden' ] );
             }
         }
         else
         {
-            Log::info(
-                __METHOD__,
-
-                [
-                    'user' => 'ist nicht gefunden'
-                ]
-            );
+            Log::info( __METHOD__, [ 'user' => 'ist nicht gefunden' ] );
 
             Usagetime::create(
                 [

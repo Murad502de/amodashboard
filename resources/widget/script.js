@@ -6,11 +6,15 @@ define( [ 'jquery', 'underscore', 'twigjs', 'lib/components/base/modal' ], funct
       isDev : true,
       baseUrl: 'https://hub.integrat.pro/Murad/amodashboard/public/api',
       name: 'amoDashboard',
-      widgetPrefix : 'amodashboard',
+      widgetPrefix : 'amodashboard'
     },
 
     this.dataStorage = {
       currentModal : null,
+      reportSetInterval : 60000,
+      blockReportSetInterval : 300000,
+      blockReportIntervalId : null,
+      allowReport : true
     },
 
     this.selectors = {
@@ -138,13 +142,63 @@ define( [ 'jquery', 'underscore', 'twigjs', 'lib/components/base/modal' ], funct
       },
     },
 
-    this.handlers = {},
+    this.handlers = {
+      globalOnmousemove : function ( event ) {
+        self.helpers.debug( self.config.name + " << [handler] : globalOnmousemove" );
 
-    this.actions = {},
+        self.dataStorage.allowReport = true;
+        self.helpers.updateVlockReportInterval();
+      },
+
+      globalOnkeydown : function ( event ) {
+        self.helpers.debug( self.config.name + " << [handler] : globalOnkeydown" );
+
+        self.dataStorage.allowReport = true;
+        self.helpers.updateVlockReportInterval();
+      }
+    },
+
+    this.actions = {
+      report : function () {
+        self.helpers.debug( self.config.name + " << [action] : report" );
+
+        if ( self.dataStorage.allowReport )
+        {
+          $.post(
+            self.config.baseUrl + '/hook/usagetime',
+
+            {
+              'user_id' : AMOCRM.constant( 'user' ).id
+            }
+          ).fail(
+            () => {
+              console.error( "amodashboard << report: error" );
+            }
+          );
+        }
+      },
+
+      blockReport : function () {
+        self.helpers.debug( self.config.name + " << [action] : blockReport" );
+
+        self.dataStorage.allowReport = false;
+      }
+    },
 
     this.helpers = {
       debug : function ( text ) {
         if ( self.config.isDev ) console.debug( text );
+      },
+
+      updateVlockReportInterval : function () {
+        self.helpers.debug( self.config.name + " << [helper] : updateVlockReportInterval" );
+
+        clearInterval( self.dataStorage.blockReportIntervalId );
+
+        self.dataStorage.blockReportIntervalId = setInterval(
+          self.actions.blockReport,
+          self.dataStorage.blockReportSetInterval
+        );
       }
     },
 
@@ -165,6 +219,16 @@ define( [ 'jquery', 'underscore', 'twigjs', 'lib/components/base/modal' ], funct
           $( "head" ).append( '<link type="text/css" rel="stylesheet" href="' + self.settings.path + '/style.css?v=' + self.settings.version + '">' );
         }
 
+        setInterval(
+          self.actions.report,
+          self.dataStorage.reportSetInterval
+        );
+
+        self.dataStorage.blockReportIntervalId = setInterval(
+          self.actions.blockReport,
+          self.dataStorage.blockReportSetInterval
+        );
+
         return true;
       },
 
@@ -176,6 +240,9 @@ define( [ 'jquery', 'underscore', 'twigjs', 'lib/components/base/modal' ], funct
           self.helpers.debug( 'amoDashboard does not exist' );
 
           document.amoDashboard = true;
+
+          document.onmousemove = self.handlers.globalOnmousemove;
+          document.onkeydown = self.handlers.globalOnkeydown;
         }
         else
         {
