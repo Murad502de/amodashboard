@@ -20,7 +20,7 @@ class UsagetimeController extends Controller
             __METHOD__,
 
             [
-                'user ID: ' => $userId
+                'user ID' => $userId
             ]
         );
 
@@ -32,7 +32,8 @@ class UsagetimeController extends Controller
                 __METHOD__,
 
                 [
-                    'user: ' => 'ist gefunden'
+                    'user' => 'ist gefunden',
+                    'last_update' => $user->updated_at
                 ]
             );
         }
@@ -42,7 +43,7 @@ class UsagetimeController extends Controller
                 __METHOD__,
 
                 [
-                    'user: ' => 'ist nicht gefunden'
+                    'user' => 'ist nicht gefunden'
                 ]
             );
 
