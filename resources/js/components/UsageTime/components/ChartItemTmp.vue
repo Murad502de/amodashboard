@@ -4,7 +4,7 @@
             <div 
                 class="dashboard-tile-online__avatar" 
                 v-bind:style="{
-                    'background-image': `url(/v3/users/b262af3e-a67d-11eb-860b-00163ef260f3/avatar/?{{user.user_id}}), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)`
+                    'background-image': 'url(https://integrat2.amocrm.ru/avatar/?' + user.user_id + '), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)'
                 }" 
                 title="Мурад"
             ></div>
