@@ -47,7 +47,7 @@ class ChangingstagesController extends Controller
 
         if ( \count( $userList ) )
         {
-            //$changingstagesLeads[ 'totalAmount' ] = Changingstages::all()->count();
+            $changingstagesLeads[ 'totalAmount' ] = Changingstages::all()->count();
 
             for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
             {
@@ -67,8 +67,6 @@ class ChangingstagesController extends Controller
                     if ( $changingstagesCount )
                     {
                         $percent = $changingstagesCount / $changingstagesLeads[ 'totalAmount' ] * 100;
-
-                        $changingstagesLeads[ 'totalAmount' ] = $changingstagesCount;
                         $changingstagesLeads[ 'users' ][] = [
                             'name' => $userName,
                             'count' => $changingstagesCount,

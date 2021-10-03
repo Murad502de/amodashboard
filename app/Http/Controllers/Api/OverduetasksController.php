@@ -85,7 +85,9 @@ class OverduetasksController extends Controller
 
         if ( \count( $userList ) )
         {
-            //$overdueTasks[ 'totalAmount' ] = Tasks::all()->count();
+            $overdueTasks[ 'totalAmount' ] = Tasks::where( 'is_completed', 0 )
+                                                    ->where( 'complete_till', '<', \time() )
+                                                    ->count();
 
             for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
             {
@@ -107,8 +109,6 @@ class OverduetasksController extends Controller
                     if ( $overdueTasksCount )
                     {
                         $percent = $overdueTasksCount / $overdueTasks[ 'totalAmount' ] * 100;
-
-                        $overdueTasks[ 'totalAmount' ] = $overdueTasksCount;
                         $overdueTasks[ 'tasks' ][] = [
                             'name' => $userName,
                             'count' => $overdueTasksCount,

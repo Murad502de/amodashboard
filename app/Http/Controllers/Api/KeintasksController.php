@@ -30,7 +30,10 @@ class KeintasksController extends Controller
 
         if ( \count( $userList ) )
         {
-            //$activeLeads[ 'totalAmount' ] = Leads::all()->count();
+            $activeLeads[ 'totalAmount' ] = Leads::where( 'status_id', '!=', 142 )
+                                                    ->where( 'status_id', '!=', 143 )
+                                                    ->where( 'closest_task_at', '=', null )
+                                                    ->count();
 
             for ( $userListIndex = 0; $userListIndex < \count( $userList ); $userListIndex++ )
             {
@@ -53,8 +56,6 @@ class KeintasksController extends Controller
                     if ( $leadCount )
                     {
                         $percent = $leadCount / $activeLeads[ 'totalAmount' ] * 100;
-
-                        $activeLeads[ 'totalAmount' ] = $leadCount;
                         $activeLeads[ 'leads' ][] = [
                             'name' => $userName,
                             'count' => $leadCount,
