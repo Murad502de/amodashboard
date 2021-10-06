@@ -1,6 +1,6 @@
 <template>
     <div class="pipeline-block-users">
-        <div v-for="(user, index) in users" :key="index" style="display: grid; grid-template-columns: 10% 90%;">
+        <div v-for="(user, index) in users" :key="index" style="display: grid; grid-template-columns: 13% 87%;">
             <div 
                 class="dashboard-tile-online__avatar" 
                 v-bind:style="{

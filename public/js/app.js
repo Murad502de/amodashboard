@@ -24771,7 +24771,7 @@ var render = function() {
         "div",
         {
           key: index,
-          staticStyle: { display: "grid", "grid-template-columns": "10% 90%" }
+          staticStyle: { display: "grid", "grid-template-columns": "13% 87%" }
         },
         [
           _c("div", {
@@ -24909,7 +24909,7 @@ var staticRenderFns = [
       [
         _c("h4", { staticClass: "dashboard-tile__item-title  short " }, [
           _c("span", { staticClass: "dashboard-tile__item-title-txt" }, [
-            _vm._v("Использование системы")
+            _vm._v("Использование системы за сутки")
           ])
         ])
       ]

@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard-tile__item-top-usage dashboard-tile__item-top_double">
         <h4 class="dashboard-tile__item-title  short ">
-            <span class="dashboard-tile__item-title-txt">Использование системы</span>
+            <span class="dashboard-tile__item-title-txt">Использование системы за сутки</span>
         </h4>
     </div>
 </template>
