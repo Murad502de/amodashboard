@@ -24220,7 +24220,11 @@ var render = function() {
               "data-font-proportion": "45:200"
             }
           },
-          [_c("span", [_vm._v(_vm._s(_vm.total))])]
+          [
+            _c("span", { staticClass: "dash-title" }, [
+              _vm._v(_vm._s(_vm.total))
+            ])
+          ]
         )
       ])
     ]
@@ -24426,7 +24430,11 @@ var render = function() {
               "data-font-proportion": "45:200"
             }
           },
-          [_c("span", [_vm._v(_vm._s(_vm.total))])]
+          [
+            _c("span", { staticClass: "dash-title" }, [
+              _vm._v(_vm._s(_vm.total))
+            ])
+          ]
         )
       ])
     ]
@@ -24632,7 +24640,11 @@ var render = function() {
               "data-font-proportion": "45:200"
             }
           },
-          [_c("span", [_vm._v(_vm._s(_vm.total))])]
+          [
+            _c("span", { staticClass: "dash-title" }, [
+              _vm._v(_vm._s(_vm.total))
+            ])
+          ]
         )
       ])
     ]
