@@ -5,7 +5,7 @@
                 <span class="dashboard-tile__item-chart-item-link js-navigate-link">{{user.name}}:</span>
             </div>
             <div class="dashboard-tile__item-chart-item-count">
-                <span class="dashboard-tile__item-chart-item-link js-navigate-link">&nbsp;<strong>{{user.count}}</strong></span>
+                <span class="dashboard-tile__item-chart-item-link js-navigate-link">&nbsp;<strong class="user-count">{{user.count}}</strong></span>
             </div>
             <div class="dashboard-tile__item-chart-item-period-count ">&nbsp;</div>
             <div class="dashboard-tile__item-chart-item-progress" v-bind:style="{ width : user.percent + '%' }"></div>

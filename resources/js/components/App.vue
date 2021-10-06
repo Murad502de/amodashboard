@@ -61,4 +61,8 @@
     .dash-title {
         font: inherit;
     }
+
+    .user-count {
+        font-weight: bold;
+    }
 </style>
