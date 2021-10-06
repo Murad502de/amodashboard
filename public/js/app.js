@@ -3220,7 +3220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    padding: 0;\n    margin: 0;\n    font: 15px 'PT Sans',Arial,sans-serif;\n    color: white;\n}\n.dash-title {\n    font: inherit;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    padding: 0;\n    margin: 0;\n    font: 15px 'PT Sans',Arial,sans-serif;\n    color: white;\n}\n.dash-title {\n    font: inherit;\n}\n.user-count {\n    font-weight: bold;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23876,7 +23876,12 @@ var render = function() {
                 staticClass:
                   "dashboard-tile__item-chart-item-link js-navigate-link"
               },
-              [_vm._v(" "), _c("strong", [_vm._v(_vm._s(user.count))])]
+              [
+                _vm._v(" "),
+                _c("strong", { staticClass: "user-count" }, [
+                  _vm._v(_vm._s(user.count))
+                ])
+              ]
             )
           ]),
           _vm._v(" "),
@@ -24113,7 +24118,12 @@ var render = function() {
                 staticClass:
                   "dashboard-tile__item-chart-item-link js-navigate-link"
               },
-              [_vm._v(" "), _c("strong", [_vm._v(_vm._s(user.count))])]
+              [
+                _vm._v(" "),
+                _c("strong", { staticClass: "user-count" }, [
+                  _vm._v(_vm._s(user.count))
+                ])
+              ]
             )
           ]),
           _vm._v(" "),
@@ -24324,7 +24334,12 @@ var render = function() {
                 staticClass:
                   "dashboard-tile__item-chart-item-link js-navigate-link"
               },
-              [_vm._v(" "), _c("strong", [_vm._v(_vm._s(user.count))])]
+              [
+                _vm._v(" "),
+                _c("strong", { staticClass: "user-count" }, [
+                  _vm._v(_vm._s(user.count))
+                ])
+              ]
             )
           ]),
           _vm._v(" "),
@@ -24534,7 +24549,12 @@ var render = function() {
                 staticClass:
                   "dashboard-tile__item-chart-item-link js-navigate-link"
               },
-              [_vm._v(" "), _c("strong", [_vm._v(_vm._s(user.count))])]
+              [
+                _vm._v(" "),
+                _c("strong", { staticClass: "user-count" }, [
+                  _vm._v(_vm._s(user.count))
+                ])
+              ]
             )
           ]),
           _vm._v(" "),
@@ -24791,7 +24811,12 @@ var render = function() {
                     staticClass:
                       "dashboard-tile__item-chart-item-link js-navigate-link"
                   },
-                  [_vm._v(" "), _c("strong", [_vm._v(_vm._s(user.count))])]
+                  [
+                    _vm._v(" "),
+                    _c("strong", { staticClass: "user-count" }, [
+                      _vm._v(_vm._s(user.count))
+                    ])
+                  ]
                 )
               ]
             ),
