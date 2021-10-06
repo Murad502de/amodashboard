@@ -3220,7 +3220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    padding: 0;\n    margin: 0;\n    font: 15px 'PT Sans',Arial,sans-serif;\n    color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    padding: 0;\n    margin: 0;\n    font: 15px 'PT Sans',Arial,sans-serif;\n    color: white;\n}\n.dash-title {\n    font: inherit;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23982,7 +23982,11 @@ var render = function() {
               "data-font-proportion": "45:200"
             }
           },
-          [_c("span", [_vm._v(_vm._s(_vm.total))])]
+          [
+            _c("span", { staticClass: "dash-title" }, [
+              _vm._v(_vm._s(_vm.total))
+            ])
+          ]
         )
       ])
     ]

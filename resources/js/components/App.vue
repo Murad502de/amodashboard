@@ -57,4 +57,8 @@
         font: 15px 'PT Sans',Arial,sans-serif;
         color: white;
     }
+
+    .dash-title {
+        font: inherit;
+    }
 </style>
