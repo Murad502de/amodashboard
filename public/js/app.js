@@ -3220,7 +3220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    padding: 0;\n    margin: 0;\n    color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    padding: 0;\n    margin: 0;\n    font: 15px 'PT Sans',Arial,sans-serif;\n    color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -24742,7 +24742,9 @@ var render = function() {
             staticClass: "dashboard-tile-online__avatar",
             style: {
               "background-image":
-                "url(/v3/users/b262af3e-a67d-11eb-860b-00163ef260f3/avatar/?{{user.user_id}}), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)"
+                "url(https://integrat2.amocrm.ru/avatar/?" +
+                user.user_id +
+                "), url(https://integrat2.amocrm.ru/frontend/images/userpic.png)"
             },
             attrs: { title: "Мурад" }
           }),

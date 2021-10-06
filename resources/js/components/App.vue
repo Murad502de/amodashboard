@@ -54,6 +54,7 @@
     * {
         padding: 0;
         margin: 0;
+        font: 15px 'PT Sans',Arial,sans-serif;
         color: white;
     }
 </style>
